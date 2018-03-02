@@ -2,7 +2,7 @@
 
 **csv.editing.py**
 
-This python script checks personal names from a CSV file to see if there are any punctuation and/or spacing errors. Since we wanted our punctuation conventions to be similar to RDA, we checked for the following errors:
+This python script checks personal names from a CSV file to see if there are any punctuation and/or spacing errors. Your CSV should have its personal names in one column entitled Names. Since we wanted our punctuation conventions to be similar to RDA, we checked for the following errors:
 
 1) A single space follows a comma.
 2) Initials are followed by a period and there is a space between two initials. (i.e. Adams, E. P., not Adams, EP or Adams E.P.)
