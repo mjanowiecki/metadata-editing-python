@@ -17,7 +17,7 @@ with open(filename) as name_file:
         match5 = re.search(r'ca\.', individual_name)
         match6 = re.search(r'cent\.', individual_name)
         match7 = re.search(r'b\.', individual_name)
-        match8 = re.search(r'd\.', individual_name) #hi there
+        match8 = re.search(r'd\.', individual_name)
         if match2:
             f.writerow([individual_name] + ['Add space after period'])
             print individual_name, ': Add space after period'
