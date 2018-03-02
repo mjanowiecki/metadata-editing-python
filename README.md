@@ -5,7 +5,7 @@
 This script checks personal names from a CSV file to see if there are any punctuation and/or spacing errors. Since we wanted our punctuation conventions to be similar to RDA, we checked for the following errors:
 
 1) A single space follows a comma.
-2) Initials are followed by a period and there is a space between two initails. (i.e. Adams, E. P., not Adams, EP or Adams E.P.)
+2) Initials are followed by a period and there is a space between two initials. (i.e. Adams, E. P., not Adams, EP or Adams E.P.)
 3) The pre-RDA abbreviations of fl., ca., cent., b., and d. are not used. 
 4) There is not a period at the end of the name unless the name ends with an abbreviation or initial (this is a local convention)
 
