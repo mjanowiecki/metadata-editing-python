@@ -1,7 +1,6 @@
 import csv
 import re
-#filename = raw_input('Enter filename (including \'.csv\'): ')
-filename = 'nameediting.csv'
+filename = raw_input('Enter filename (including \'.csv\'): ')
 
 f=csv.writer(open('namesChecked.csv', 'wb'))
 f.writerow(['individualName']+['errorType'])
@@ -10,9 +9,9 @@ with open(filename) as name_file:
     names = csv.DictReader(name_file)
     for name in names:
         individual_name = name['Names'].strip()
-        match = re.search(r',\S', individual_name)
-        match2 = re.search(r'\S\.\S', individual_name) #
-        match3 = re.search(r'\s[A-Z][A-Z]$', individual_name)
+        match = re.search(r',\S', individual_name) #searches for the pattern:, non-whitespace character (Smith,Bob)
+        match2 = re.search(r'\S\.\S', individual_name) #searches for the pattern:nonwhitespace character . nonwhitespace character (Smith, B.B.)
+        match3 = re.search(r'\s[A-Z][A-Z]$', individual_name)#searches for the pattern:whitespace[CAPITALLETTER][CAPITALLETTER]endofstring (Smith, BB)
         match4 = re.search(r'fl\.', individual_name)
         match5 = re.search(r'ca\.', individual_name)
         match6 = re.search(r'cent\.', individual_name)
@@ -21,12 +20,10 @@ with open(filename) as name_file:
         if match2:
             f.writerow([individual_name] + ['Add space after period'])
             print individual_name, ': Add space after period'
-        elif individual_name[-1] == '.' and individual_name[-3] != ' ':
+        elif individual_name[-1] == '.' and individual_name[-3] != ' ': #if there is period at the end of the name, and the 3rd character from the end of the end isn't a space (Smith, Bob.)
             f.writerow([individual_name] + ['Remove period'])
             print individual_name, ': Remove period'
-        #elif individual_name[-1] == '.' and individual_name[-3].isspace():
-            #print individual_name, ': That\'s ok'
-        elif individual_name[-1] != '.' and individual_name[-2].isspace():
+        elif individual_name[-1] != '.' and individual_name[-2].isspace(): #if there ISN'T period at the end of the name and the 2nd character is a space (Smith, B)
             f.writerow([individual_name] + ['Add period after initial'])
             print individual_name, ': Add period after initial'
         elif match:
