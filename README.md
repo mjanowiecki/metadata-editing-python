@@ -25,7 +25,7 @@ This script takes a CSV with a list of subjects (see below)
 |value                                     |multipleTerms |Non-delimiterUseOfCharacter|possibleDelimiter|
 | -----------------------------------------|--------------|---------------------------|-----------------|
 |manuscripts; Sanskrit                     |y             |n                          |;                |
-|attention, learning,memory ,visual cortex |y             |                           |;                |
+|attention, learning,memory ,visual cortex |y             |n                          |,                |
 |unicorns                                  |n             |                           |                 |
 
 and creates a new CSV that contains all of the original values with multiple subjects in one column (in their original form) and a list of these values in another column. 
