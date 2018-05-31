@@ -18,9 +18,13 @@ The script makes a new CSV file with two columns called individualName and error
 |Abelson, Paul,1878-	            |Add space after comma  |  
 |Aberra, A.A.	                    |Add space after period |  
 
+
+
 **originalAndNewHeadings.py**
 
-This script takes a CSV with a list of subjects (see below)
+This script takes a CSV (CSV1) with a list of subjects and creates a new CSV (CSV2) that contains all of the original values with multiple subjects in one column (in their original form) and a list of these values in another column. 
+
+***CSV1***
 
 |value                                     |multipleTerms |Non-delimiterUseOfCharacter|possibleDelimiter|
 | -----------------------------------------|--------------|---------------------------|-----------------|
@@ -28,7 +32,7 @@ This script takes a CSV with a list of subjects (see below)
 |attention, learning,memory ,visual cortex |y             |n                          |,                |
 |unicorns                                  |n             |                           |                 |
 
-and creates a new CSV that contains all of the original values with multiple subjects in one column (in their original form) and a list of these values in another column. 
+***CSV2***
 
 |originalSubject                           |listofSubject                            |
 | -----------------------------------------|-----------------------------------------|
