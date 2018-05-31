@@ -34,7 +34,7 @@ This script takes a CSV (CSV1) with a list of subjects and creates a new CSV (CS
 
 ***CSV2***
 
-|originalSubject                           |listofSubject                            |
-| -----------------------------------------|-----------------------------------------|
-|manuscripts; Sanskrit                     |['manuscripts', 'Sanskrit']              |
-|attention, learning,memory ,visual cortex |['attention', 'learning', 'memory', 'visual cortex']                                |
+|originalSubject                           |listofSubject                                         |
+| -----------------------------------------|------------------------------------------------------|
+|manuscripts; Sanskrit                     |['manuscripts', 'Sanskrit']                           |
+|attention, learning,memory ,visual cortex |['attention', 'learning', 'memory', 'visual cortex']  |
