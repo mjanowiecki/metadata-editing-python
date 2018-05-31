@@ -22,7 +22,7 @@ The script makes a new CSV file with two columns called individualName and error
 
 **originalAndNewHeadings.py**
 
-This script takes a CSV (CSV1) with a list of subjects and creates a new CSV (CSV2) that contains all of the original values with multiple subjects in one column (in their original form) and a list of these values in another column. 
+This script takes a CSV (CSV1) with a list of subjects and creates a new CSV (CSV2) that contains all of the values with multiple subjects in one column (in their original form) and a list of these values in another column. 
 
 ***CSV1***
 
