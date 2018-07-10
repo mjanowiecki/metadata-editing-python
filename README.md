@@ -1,8 +1,8 @@
 # metadata-editing-python
 
-**csv.editing.py**
+**csvediting.py**
 
-This python script checks personal names from a CSV file to see if there are any punctuation and/or spacing errors. Your CSV should have its personal names in one column entitled Names. Since we wanted our punctuation conventions to be similar to RDA, we checked for the following errors:
+This script checks personal names from a CSV file to see if there are any punctuation and/or spacing errors. Your CSV should have its personal names in one column entitled Names. Since we wanted our punctuation conventions to be similar to RDA, we checked for the following errors:
 
 1) A single space follows a comma.
 2) Initials are followed by a period and there is a space between two initials. (i.e. Adams, E. P., not Adams, EP or Adams E.P.)
@@ -17,3 +17,24 @@ The script makes a new CSV file with two columns called individualName and error
 |Abbott, Edwin Abbott,1838-1926.  |Remove period          |   
 |Abelson, Paul,1878-	            |Add space after comma  |  
 |Aberra, A.A.	                    |Add space after period |  
+
+
+
+**originalAndNewHeadings.py**
+
+This script takes a CSV (CSV1) with a list of subjects and creates a new CSV (CSV2) that contains all of the values with multiple subjects in one column (in their original form) and a list of these values in another column. 
+
+***CSV1***
+
+|value                                     |multipleTerms |Non-delimiterUseOfCharacter|possibleDelimiter|
+| -----------------------------------------|--------------|---------------------------|-----------------|
+|manuscripts; Sanskrit                     |y             |n                          |;                |
+|attention, learning,memory ,visual cortex |y             |n                          |,                |
+|unicorns                                  |n             |                           |                 |
+
+***CSV2***
+
+|originalSubject                           |listofSubject                                         |
+| -----------------------------------------|------------------------------------------------------|
+|manuscripts; Sanskrit                     |['manuscripts', 'Sanskrit']                           |
+|attention, learning,memory ,visual cortex |['attention', 'learning', 'memory', 'visual cortex']  |
