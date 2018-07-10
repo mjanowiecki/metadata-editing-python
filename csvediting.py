@@ -1,6 +1,15 @@
 import csv
 import re
-filename = raw_input('Enter filename (including \'.csv\'): ')
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-f', '--file', help='collectionHandle of the collection to retreive. optional - if not provided, the script will ask for input')
+args = parser.parse_args()
+
+if args.file:
+    filename = args.file
+else:
+    filename = raw_input('Enter filename (including \'.csv\'): ')
 
 f=csv.writer(open('namesChecked.csv', 'wb'))
 f.writerow(['individualName']+['errorType'])
@@ -10,7 +19,7 @@ with open(filename) as name_file:
     for name in names:
         individual_name = name['Names'].strip()
         match = re.search(r',\S', individual_name) #searches for the pattern:, non-whitespace character (Smith,Bob)
-        match2 = re.search(r'\S\.\S', individual_name) #searches for the pattern:nonwhitespace character . nonwhitespace character (Smith, B.B.)
+        match2 = re.search(r'\S\.\w', individual_name) #searches for the pattern:nonwhitespace character . nonwhitespace character (Smith, B.B.)
         match3 = re.search(r'\s[A-Z][A-Z]$', individual_name)#searches for the pattern:whitespace[CAPITALLETTER][CAPITALLETTER]endofstring (Smith, BB)
         match4 = re.search(r'fl\.', individual_name)
         match5 = re.search(r'ca\.', individual_name)
@@ -35,3 +44,5 @@ with open(filename) as name_file:
         elif match4 or match5 or match6 or match7 or match8:
             f.writerow([individual_name] + ['Not updated to RDA standards'])
             print individual_name, ': Not updated to RDA standards'
+        else :
+            f.writerow([individual_name] + [])
