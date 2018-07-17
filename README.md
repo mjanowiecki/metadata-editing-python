@@ -41,3 +41,20 @@ This script takes a CSV (CSV1) with unstructured lists of values and converts th
 |manuscripts; Sanskrit                     |['manuscripts', 'Sanskrit']                           |
 |attention, learning,memory ,visual cortex |['attention', 'learning', 'memory', 'visual cortex']  |
 |corgis; golden retrievers;bulldog;        |['corgis', 'golden retrievers', 'bulldog']            |
+
+
+
+**collaspingMultipleCSVColumnsToOneColumn.py**
+
+This script takes a CSV with multiple columns and collapses them to a single column. The CSV to convert is selected when entering the script into the terminal. Type python collaspingMultipleCSVColumnsToOneColumn.py -f filename.csv
+
+***original***
+
+|boston terrier	|bulldog  |corgi  	|great dane	|dalmatian  |
+
+***oneColumn***
+|boston terrier	|
+|bulldog        |
+|corgi  	      |
+|great dane   	|
+|dalmatian      |
