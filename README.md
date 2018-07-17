@@ -49,10 +49,15 @@ This script takes a CSV (CSV1) with unstructured lists of values and converts th
 This script takes a CSV with multiple columns and collapses them to a single column. The CSV to convert is selected when entering the script into the terminal. Type python collaspingMultipleCSVColumnsToOneColumn.py -f filename.csv
 
 ***original***
-
-|boston terrier	|bulldog  |corgi  	|great dane	|dalmatian  |
+|breed1         |breed2         |breed3         |breed4         |breed5         |
+|---------------|---------------|---------------|---------------|---------------|
+|boston terrier	|bulldog        |corgi        	|great dane	    |dalmatian      |
+|beagle         |               |               |               |               |
+|lab            |whippet        |               |               |               |
 
 ***oneColumn***
+|dogs           |
+|---------------|
 |boston terrier	|
 |bulldog        |
 |corgi  	      |
