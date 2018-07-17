@@ -65,3 +65,6 @@ This script takes a CSV with multiple columns and collapses them to a single col
 |corgi  	      |
 |great dane   	|
 |dalmatian      |
+|beagle         |
+|lab            |
+|whippet        |
