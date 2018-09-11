@@ -30,7 +30,7 @@ f.writerow(['unstructuredList'] + ['structuredList'])
 with open(file_name) as unstructuredList_file:
     unstructuredList = csv.DictReader(unstructuredList_file)
     for row in unstructuredList:
-        unstructured_values = row['value'].strip()
+        unstructured_values = row['editedValue'].strip()
         multiple_values = row['multipleTerms'].strip()
         possible_delimiter = row['possibleDelimiter'].strip()
         match1 = re.search(r'^,$', possible_delimiter)
