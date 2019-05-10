@@ -9,9 +9,9 @@ args = parser.parse_args()
 if args.file:
     filename = args.file
 else:
-    filename = raw_input('Enter filename (including \'.csv\'): ')
+    filename = input('Enter filename (including \'.csv\'): ')
 
-f=csv.writer(open('namesInitialsSearchResults.csv', 'wb'))
+f=csv.writer(open('namesInitialsSearchResults.csv', 'w'))
 f.writerow(['names']+['errorType'])
 
 with open(filename) as name_file:
@@ -27,6 +27,6 @@ with open(filename) as name_file:
             f.writerow([individual_name] + [''])
         elif contains_initials :
             f.writerow([individual_name] + ['might be initials'])
-            print individual_name
+            print(individual_name)
         else:
             f.writerow([individual_name] + [''])

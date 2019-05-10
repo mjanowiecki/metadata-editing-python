@@ -10,7 +10,7 @@ args = parser.parse_args()
 if args.file:
     file_name = args.file
 else:
-    file_name = raw_input('Enter file name as filename.csv: ')
+    file_name = input('Enter file name as filename.csv: ')
 
 def splitValues(delimiter):
     unstructured_values_split = unstructured_values.split(delimiter)
@@ -24,7 +24,7 @@ def splitValues(delimiter):
         f.writerow([k] + [v])
 
 
-f=csv.writer(open('structuredAndUnstructuredLists.csv', 'wb'))
+f=csv.writer(open('structuredAndUnstructuredLists.csv', 'w'))
 f.writerow(['unstructuredList'] + ['structuredList'])
 
 with open(file_name) as unstructuredList_file:

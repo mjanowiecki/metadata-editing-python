@@ -10,9 +10,9 @@ args = parser.parse_args()
 if args.file:
     filename = args.file
 else:
-    filename = raw_input('Enter filename (including \'.csv\'): ')
+    filename = input('Enter filename (including \'.csv\'): ')
 
-f=csv.writer(open('sampledtitles.csv','wb'))
+f=csv.writer(open('sampledtitles.csv','w'))
 f.writerow(['samples'])
 
 with open(filename) as csvfile:
