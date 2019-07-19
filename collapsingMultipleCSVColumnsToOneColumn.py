@@ -12,12 +12,14 @@ else:
 
 f=csv.writer(open('oneColumn.csv', 'w'))
 
+
 all_columns_list = []
 with open(filename) as multipleColumnsFile:
     multipleColumns = csv.reader(multipleColumnsFile)
     for row in multipleColumns:
         for item in row:
+            if item:
             #if item not in all_columns_list:
-            all_columns_list.append(item)
+                all_columns_list.append(item)
 for item in all_columns_list:
     f.writerow([item])
