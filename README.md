@@ -29,8 +29,6 @@ This script takes a CSV with multiple columns and collapses them to a single col
 
 **combineRowsWithIdenticalValuesInColumn.py**
 
-**convertLCSHToFAST.py**
-
 **convertsUnstructuredListsToStructuredLists.py**
 This script takes a CSV (CSV1) with unstructured lists of values and converts them into new structured lists. The original unstructured lists and the new structured lists are imported into a new CSV(structuredAndUnstructuredLists.csv). This script is useful when many values have been entered into a single field. The CSV to convert is selected when entering the script into the terminal. Type python convertsUnstructuredListsToStructuredLists.py -f filename.csv
 
