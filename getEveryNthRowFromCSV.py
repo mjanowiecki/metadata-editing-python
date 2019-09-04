@@ -12,11 +12,11 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-f=csv.writer(open('sampledtitles.csv','w'))
+f = csv.writer(open('sampledtitles.csv', 'w'))
 f.writerow(['samples'])
 
 with open(filename) as csvfile:
-     rows = csv.reader(csvfile)
-     sampled_rows = itertools.islice(csvfile, 1, None, 40)
-     for sample in sampled_rows:
-         f.writerow([sample])
+    rows = csv.reader(csvfile)
+    sampled_rows = itertools.islice(csvfile, 1, None, 40)
+    for sample in sampled_rows:
+        f.writerow([sample])

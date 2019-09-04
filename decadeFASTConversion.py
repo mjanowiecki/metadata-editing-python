@@ -1,8 +1,6 @@
 import csv
 import argparse
 
-
-
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file', help='collectionHandle of the collection to retreive. optional - if not provided, the script will ask for input')
 args = parser.parse_args()
@@ -12,7 +10,7 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-f=csv.writer(open('decadesFAST.csv', 'w'))
+f = csv.writer(open('decadesFAST.csv', 'w'))
 f.writerow(['dc.title']+['dc.description.abstract']+['dc.identifier.other']+['uri']+['link']+['decade']+['dc.subject'])
 
 with open(filename) as itemMetadataFile:

@@ -1,8 +1,5 @@
-from datetime import datetime
-
 import csv
 import argparse
-import re
 
 
 parser = argparse.ArgumentParser()
@@ -14,15 +11,13 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-f=csv.writer(open('full_identifier.csv', 'w', encoding='utf-8'))
+f = csv.writer(open('full_identifier.csv', 'w', encoding='utf-8'))
 f.writerow(['dc.identifier']+['full.identifier'])
-
-
 
 with open(filename) as itemMetadataFile:
     itemMetadata = csv.DictReader(itemMetadataFile)
     for row in itemMetadata:
-        identifier = row ['dc.identifier']
+        identifier = row['dc.identifier']
         if len(identifier) == 5:
             full_identifier = 'jhu_coll-0002_'+identifier
             f.writerow([identifier]+[full_identifier])

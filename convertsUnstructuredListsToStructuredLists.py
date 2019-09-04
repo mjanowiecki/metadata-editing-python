@@ -12,6 +12,7 @@ if args.file:
 else:
     file_name = input('Enter file name as filename.csv: ')
 
+
 def splitValues(delimiter):
     unstructured_values_split = unstructured_values.split(delimiter)
     unstructured_values_edited = []
@@ -20,11 +21,11 @@ def splitValues(delimiter):
         unstructured_values_edited.append(each_value)
     valuesDict = {}
     valuesDict[unstructured_values] = unstructured_values_edited
-    for k,v in valuesDict.items():
+    for k, v in valuesDict.items():
         f.writerow([k] + [v])
 
 
-f=csv.writer(open('structuredAndUnstructuredLists.csv', 'w'))
+f = csv.writer(open('structuredAndUnstructuredLists.csv', 'w'))
 f.writerow(['unstructuredList'] + ['structuredList'])
 
 with open(file_name) as unstructuredList_file:

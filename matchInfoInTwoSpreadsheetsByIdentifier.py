@@ -1,8 +1,6 @@
-from datetime import datetime
-
 import csv
 import argparse
-import re
+
 
 
 parser = argparse.ArgumentParser()
@@ -20,7 +18,7 @@ if args.file2:
 else:
     filename2 = input('Enter filename (including \'.csv\'): ')
 
-f=csv.writer(open('uris.csv', 'w', encoding='utf-8'))
+f = csv.writer(open('uris.csv', 'w', encoding='utf-8'))
 f.writerow(['dc.identifier']+['full.identifier']+['uri']+['link'])
 
 

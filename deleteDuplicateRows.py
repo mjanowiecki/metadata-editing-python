@@ -9,7 +9,7 @@ if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
-f=csv.writer(open('noDuplicateRows.csv', 'w', encoding='utf-8'))
+f = csv.writer(open('noDuplicateRows.csv', 'w', encoding='utf-8'))
 
 noDuplicateList = []
 with open(filename) as itemMetadataFile:

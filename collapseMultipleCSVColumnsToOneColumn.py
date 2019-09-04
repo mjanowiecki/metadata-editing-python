@@ -10,7 +10,7 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-f=csv.writer(open('oneColumn.csv', 'w'))
+f = csv.writer(open('oneColumn.csv', 'w'))
 
 
 all_columns_list = []
@@ -19,7 +19,7 @@ with open(filename) as multipleColumnsFile:
     for row in multipleColumns:
         for item in row:
             if item:
-            #if item not in all_columns_list:
+                # if item not in all_columns_list:
                 all_columns_list.append(item)
 for item in all_columns_list:
     f.writerow([item])
