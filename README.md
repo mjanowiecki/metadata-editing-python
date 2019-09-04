@@ -1,7 +1,5 @@
 # metadata-editing-python
 
-**checkStringAgainstFAST.py**
-
 **collapseMultipleCSVColumnsToOneColumn.py**
 
 This script takes a CSV with multiple columns and collapses them to a single column. The CSV to convert is selected when entering the script into the terminal. Type python collaspingMultipleCSVColumnsToOneColumn.py -f filename.csv
