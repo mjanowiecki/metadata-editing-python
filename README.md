@@ -49,11 +49,17 @@ This script takes a CSV (CSV1) with unstructured lists of values and converts th
 
 **decadeFASTConversion.py**
 
+This script takes a numeric date and finds the corresponding FAST subject heading for that decade. For example "1922-08" --> "Nineteen twenties".
+
 **deleteDuplicateRows.py**
+
+This script deletes any rows with the exact same information from a CSV.
 
 **expandIdentifierBasedOnPattern.py**
 
 **getEveryNthRowFromCSV.py**
+
+This script grabs every Nth row from a CSV to create a sample of data.
 
 **matchInfoInTwoSpreadsheetsByIdentifier.py**
 
