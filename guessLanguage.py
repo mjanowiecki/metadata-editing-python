@@ -1,6 +1,7 @@
 import csv
 import argparse
 from langdetect import detect_langs
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -11,7 +12,9 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-f = csv.writer(open('languagedetection.csv', 'w'))
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+
+f = csv.writer(open('languageDetected_'+dt+'.csv', 'w'))
 f.writerow(['itemID']+['uri']+['collectionName']+['title']+['type']+['language'])
 
 with open(filename) as itemMetadataFile:

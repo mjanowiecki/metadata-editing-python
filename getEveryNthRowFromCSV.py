@@ -2,9 +2,10 @@
 import csv
 import argparse
 import itertools
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--file', help='enter filename to retreive. optional - if not provided, the script will ask for input')
+parser.add_argument('-f', '--file', help='enter filename to retreive')
 args = parser.parse_args()
 
 if args.file:
@@ -12,7 +13,11 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-f = csv.writer(open('sampledtitles.csv', 'w'))
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+
+old_file = filename.replace('.csv', '')
+
+f = csv.writer(open('sampledRowsFrom'+old_file+'_'+dt+'.csv', 'w'))
 f.writerow(['samples'])
 
 with open(filename) as csvfile:

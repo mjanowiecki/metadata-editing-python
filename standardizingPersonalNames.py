@@ -1,9 +1,10 @@
 import csv
 import re
 import argparse
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--file', help='collectionHandle of the collection to retreive. optional - if not provided, the script will ask for input')
+parser.add_argument('-f', '--file')
 args = parser.parse_args()
 
 if args.file:
@@ -11,7 +12,9 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-f = csv.writer(open('namesStandardized.csv', 'w'))
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+
+f = csv.writer(open('namesStandardized'+dt+'.csv', 'w'))
 f.writerow(['personalName']+['errorType'])
 
 with open(filename) as name_file:

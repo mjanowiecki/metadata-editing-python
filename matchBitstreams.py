@@ -1,5 +1,6 @@
 import csv
 import argparse
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -13,7 +14,10 @@ else:
 handleDict = {}
 extDict = {}
 
-f = csv.writer(open('matchedBitstreams.csv', 'w', encoding='utf-8'))
+
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+
+f = csv.writer(open('matchedBitstreams_'+dt+'.csv', 'w', encoding='utf-8'))
 
 
 with open(filename) as itemMetadataFile:

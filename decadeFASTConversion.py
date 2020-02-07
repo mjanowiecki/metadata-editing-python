@@ -1,8 +1,9 @@
 import csv
 import argparse
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--file', help='collectionHandle of the collection to retreive. optional - if not provided, the script will ask for input')
+parser.add_argument('-f', '--file')
 args = parser.parse_args()
 
 if args.file:
@@ -10,24 +11,25 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-f = csv.writer(open('decadesFAST.csv', 'w'))
-f.writerow(['dc.title']+['dc.description.abstract']+['dc.identifier.other']+['uri']+['link']+['decade']+['dc.subject'])
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+
+f = csv.writer(open('decadesFAST_'+dt+'.csv', 'w'))
+f.writerow(['dc.title']+['dc.identifier.other']+['uri']+['link']+['decade']+['dc.subject'])
 
 with open(filename) as itemMetadataFile:
     itemMetadata = csv.DictReader(itemMetadataFile)
     for row in itemMetadata:
         dc_title = row['dc.title']
-        dc_description = row['dc.description.abstract']
-        dc_identifier = row['dc.identifier.other']
+        dc_id = row['dc.identifier.other']
         uri = row['uri']
         link = row['link']
         decade = row['decade'].strip()
         if len(decade) == 4 or len(decade) == 5:
             print(decade)
             if decade[0:3] == '200':
-                newdecade = 'Two thousands (Decade)'
-                print(newdecade)
-                f.writerow([dc_title]+[dc_description]+[dc_identifier]+[uri]+[link]+[decade]+[newdecade])
+                n_decade = 'Two thousands (Decade)'
+                print(n_decade)
+                f.writerow([dc_title]+[dc_id]+[uri]+[link]+[decade]+[n_decade])
             else:
                 century = decade[0:2]
                 if century == '18':
@@ -55,8 +57,8 @@ with open(filename) as itemMetadataFile:
                     tens = 'eighties'
                 elif tens == '9':
                     tens = 'nineties'
-                newdecade = century+' '+tens
-                print(newdecade)
-                f.writerow([dc_title]+[dc_description]+[dc_identifier]+[uri]+[link]+[decade]+[newdecade])
+                n_decade = century+' '+tens
+                print(n_decade)
+                f.writerow([dc_title]+[dc_id]+[uri]+[link]+[decade]+[n_decade])
         else:
-            f.writerow([dc_title]+[dc_description]+[dc_identifier]+[uri]+[link]+[decade]+['not converted'])
+            f.writerow([dc_title]+[dc_id]+[uri]+[link]+[decade]+['not converted'])

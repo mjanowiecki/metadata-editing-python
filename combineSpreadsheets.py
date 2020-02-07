@@ -1,6 +1,7 @@
 import pandas as pd
 import argparse
 import os
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
 
@@ -12,6 +13,7 @@ if args.directory:
 else:
     directory = input('Enter directory: ')
 
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 newDF = pd.DataFrame()
 for filename in os.listdir(directory):
@@ -23,4 +25,4 @@ for filename in os.listdir(directory):
 
 print(newDF.head)
 
-newDF.to_csv(path_or_buf='mergedCSV.csv', index=False)
+newDF.to_csv(path_or_buf='mergedCSV_'+dt+'.csv', index=False)

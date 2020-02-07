@@ -1,8 +1,9 @@
 import csv
 import argparse
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--file', help='collectionHandle of the collection to retreive. optional - if not provided, the script will ask for input')
+parser.add_argument('-f', '--file')
 args = parser.parse_args()
 
 if args.file:
@@ -10,8 +11,9 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-f = csv.writer(open('oneColumn.csv', 'w'))
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
+f = csv.writer(open('oneColumn_'+dt+'.csv', 'w'))
 
 all_columns_list = []
 with open(filename) as multipleColumnsFile:

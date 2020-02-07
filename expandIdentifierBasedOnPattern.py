@@ -3,7 +3,7 @@ import argparse
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--file', help='collectionHandle of the collection to retreive. optional - if not provided, the script will ask for input')
+parser.add_argument('-f', '--file')
 args = parser.parse_args()
 
 if args.file:

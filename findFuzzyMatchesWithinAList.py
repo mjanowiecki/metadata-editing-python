@@ -2,6 +2,7 @@ import csv
 import argparse
 import ast
 from fuzzywuzzy import fuzz
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -12,9 +13,10 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
-f = csv.writer(open('listMatches.csv', 'w', encoding='utf-8'))
-f2 = csv.writer(open('noMatches.csv', 'w', encoding='utf-8'))
+f = csv.writer(open('fuzzyListMatches_'+dt+'.csv', 'w', encoding='utf-8'))
+f2 = csv.writer(open('noMatches_'+dt+'.csv', 'w', encoding='utf-8'))
 
 
 def convertDictToList(dict):

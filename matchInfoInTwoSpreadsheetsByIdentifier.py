@@ -1,11 +1,10 @@
 import csv
 import argparse
-
-
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--file', help='collectionHandle of the collection to retreive. optional - if not provided, the script will ask for input')
-parser.add_argument('-t', '--file2', help='collectionHandle of the collection to retreive. optional - if not provided, the script will ask for input')
+parser.add_argument('-f', '--file')
+parser.add_argument('-t', '--file2')
 args = parser.parse_args()
 
 if args.file:
@@ -18,7 +17,9 @@ if args.file2:
 else:
     filename2 = input('Enter filename (including \'.csv\'): ')
 
-f = csv.writer(open('uris.csv', 'w', encoding='utf-8'))
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+
+f = csv.writer(open('matchedById_'+dt+'.csv', 'w', encoding='utf-8'))
 f.writerow(['dc.identifier']+['full.identifier']+['uri']+['link'])
 
 

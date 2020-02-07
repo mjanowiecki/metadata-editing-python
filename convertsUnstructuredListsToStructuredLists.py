@@ -1,16 +1,18 @@
-
 import csv
 import re
 import argparse
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--file', help='file_name to retreive. optional - if not provided, the script will ask for input')
+parser.add_argument('-f', '--file', help='file_name to retreive')
 args = parser.parse_args()
 
 if args.file:
     file_name = args.file
 else:
     file_name = input('Enter file name as filename.csv: ')
+
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 
 def splitValues(delimiter):
@@ -25,7 +27,7 @@ def splitValues(delimiter):
         f.writerow([k] + [v])
 
 
-f = csv.writer(open('structuredAndUnstructuredLists.csv', 'w'))
+f = csv.writer(open('structuredAndUnstructuredLists_'+dt+'.csv', 'w'))
 f.writerow(['unstructuredList'] + ['structuredList'])
 
 with open(file_name) as unstructuredList_file:
