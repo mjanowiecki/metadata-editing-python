@@ -13,7 +13,7 @@ else:
 handleDict = {}
 extDict = {}
 
-f = csv.writer(open('pie.csv', 'w', encoding='utf-8'))
+f = csv.writer(open('matchedBitstreams.csv', 'w', encoding='utf-8'))
 
 
 with open(filename) as itemMetadataFile:
