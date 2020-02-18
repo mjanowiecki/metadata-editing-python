@@ -4,7 +4,6 @@ import os
 from datetime import datetime
 
 parser = argparse.ArgumentParser()
-
 parser.add_argument('-d', '--directory')
 args = parser.parse_args()
 
