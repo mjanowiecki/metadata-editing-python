@@ -14,9 +14,7 @@ else:
 handleDict = {}
 extDict = {}
 
-
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-
 f = csv.writer(open('matchedBitstreams_'+dt+'.csv', 'w', encoding='utf-8'))
 
 
