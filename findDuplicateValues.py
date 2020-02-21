@@ -29,7 +29,7 @@ df = pd.read_csv(filename, encoding=my_encoding)
 
 df['dc.title'] = df['dc.title'].str.upper()
 
-duplicatedRows = df[df.duplicated(['dc.title'], keep=False)]
-print(duplicatedRows)
-if duplicatedRows.empty is False:
-    duplicatedRows.to_csv(path_or_buf='duplicatedValuesInCSV_'+dt+'.csv', index=False)
+dupRows = df[df.duplicated(['dc.title'], keep=False)]
+print(dupRows)
+if dupRows.empty is False:
+    dupRows.to_csv(path_or_buf='duplicatedValues_'+dt+'.csv', index=False)

@@ -1,4 +1,4 @@
-import csv
+import pandas as pd
 import argparse
 from datetime import datetime
 
@@ -11,20 +11,9 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
+df = pd.read_csv(filename)
+df = df.drop_duplicates()
+
+new_name = filename.replace('.csv', '')
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-
-old_file = filename.replace('.csv', '')
-
-noDuplicateList = []
-
-f = csv.writer(open(old_file+'NoDuplicateRows_'+dt+'.csv', 'w', encoding='utf-8'))
-with open(filename) as itemMetadataFile:
-    csv = csv.reader(itemMetadataFile)
-    for row in csv:
-        if row not in noDuplicateList:
-            noDuplicateList.append(row)
-        else:
-            print('pass')
-
-for item in noDuplicateList:
-    f.writerow(item)
+df.to_csv(path_or_buf='noDuplicates_'+new_name+'_'+dt+'.csv', index=False)
