@@ -22,6 +22,7 @@ for filename in os.listdir(directory):
         df = pd.read_csv(filename)
         newDF = newDF.append(df, ignore_index=True, sort=True)
 
+newDF = newDF.drop_duplicates()
 print(newDF.head)
 
 newDF.to_csv(path_or_buf='mergedCSV_'+dt+'.csv', index=False)
