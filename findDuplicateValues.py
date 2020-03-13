@@ -11,8 +11,7 @@ if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
-
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+columnToCheck = ''
 
 
 def find_encoding(fname):
@@ -23,13 +22,14 @@ def find_encoding(fname):
 
 
 my_encoding = find_encoding(filename)
-
 print(my_encoding)
+
 df = pd.read_csv(filename, encoding=my_encoding)
+df[columnToCheck] = df[columnToCheck].str.upper()
 
-df['dc.title'] = df['dc.title'].str.upper()
+dupRows = df[df.duplicated([columnToCheck], keep=False)]
 
-dupRows = df[df.duplicated(['dc.title'], keep=False)]
 print(dupRows)
 if dupRows.empty is False:
+    dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
     dupRows.to_csv(path_or_buf='duplicatedValues_'+dt+'.csv', index=False)

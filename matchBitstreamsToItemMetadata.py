@@ -52,7 +52,5 @@ else:
 
 print(new_df.columns)
 print(new_df.head)
-
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-
 new_df.to_csv(path_or_buf='remediatedBitstreams_'+dt+'.csv', index=False)
