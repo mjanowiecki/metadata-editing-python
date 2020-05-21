@@ -3,6 +3,7 @@
 Scripts to merge, pivot, and edit CSV data. Many of these script rely on the pandas library.
 
 **basicPivot.py**
+
 This script does a basic pandas pivot_table by setting the index to the value of a specific column.
 
 **checkIfIdentifiersInSheet.py**
@@ -14,7 +15,6 @@ This script checks if two CSVs have the same identifiers by left merging (joinin
 This script takes a CSV with multiple columns and collapses them to a single column.
 
 ***original***
-
 |breed1         |breed2         |breed3         |breed4         |breed5         |
 |---------------|---------------|---------------|---------------|---------------|
 |boston terrier	|bulldog        |corgi        	|great dane	    |dalmatian      |
@@ -22,7 +22,6 @@ This script takes a CSV with multiple columns and collapses them to a single col
 |lab            |whippet        |               |               |               |
 
 ***oneColumn***
-
 |dogs           |
 |---------------|
 |boston terrier	|
@@ -62,7 +61,6 @@ Uses pandas pivot_table to combine subject strings by identifier number. Then a 
 This script takes a CSV with unstructured lists of values and converts them into new structured lists. The original unstructured lists and the new structured lists are imported into a new CSV (structuredAndUnstructuredLists.csv).
 
 ***original***
-
 |value                                     |multipleTerms |possibleDelimiter|
 | -----------------------------------------|--------------|-----------------|
 |manuscripts; Sanskrit                     |y             |;                |
@@ -71,7 +69,6 @@ This script takes a CSV with unstructured lists of values and converts them into
 |unicorns                                  |n             |                 |
 
 ***structuredAndUnstructuredLists.csv***
-
 |unstructuredList                          |structuredList                                        |
 | -----------------------------------------|------------------------------------------------------|
 |manuscripts; Sanskrit                     |['manuscripts', 'Sanskrit']                           |
@@ -87,6 +84,7 @@ This script looks at multiple spreadsheets in a folder, and counts how many valu
 This script combines multiple spreadsheet from a folder into a dataframe, and makes a new spreadsheet for each column found in the combined dataframe.
 
 **deleteBlankColumnsAndRows.py**
+
 This script deletes any rows and columns that are completely blank from a CSV.
 
 **deleteDuplicateRows.py**
@@ -155,7 +153,6 @@ This script melts a wide CSV with multiple column pairs of an auth_name and voca
 
 This script uses a pandas left merge (left join) to join information from CSV 2 to CSV 1 based on identifier.
 
-**mergeTwoColumns.py**
 **reformatInversedNames.py**
 
 This script takes basic personal names without dates, and inverses them to follow a Secondary Name, Primary Name format.
