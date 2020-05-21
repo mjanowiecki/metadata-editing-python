@@ -1,7 +1,6 @@
 import pandas as pd
 import argparse
 from datetime import datetime
-import ast
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -65,16 +64,6 @@ for x in names:
                 newdict[x] = [valuetoadd]
             else:
                 pass
-
-
-
-
-
-# for x in new_list:
-#     for k, v in x.items():
-#         v = v[0:3]
-#         print(v)
-#         x[k] = v
 
 new_list_flat = []
 for k, v in newdict.items():
