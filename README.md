@@ -2,7 +2,7 @@
 
 Scripts to merge, pivot, and edit CSV data. Many of these script rely on the pandas library.
 
-*Clean-up sheet*
+## Clean-up sheet
 
 **convertUnstructuredListsToStructuredLists.py**
 
@@ -31,7 +31,7 @@ This script deletes any rows and columns that are completely blank from a CSV.
 
 This script deletes any rows with the exact same information from a CSV.
 
-*Evaluate sheet*
+## Evaluate sheet
 
 **findIdentifiersInSheet.py**
 
@@ -49,7 +49,7 @@ This script uses pandas to find any duplicated values within a column of a CSV, 
 
 Find all identifiers in a sheet that appear more than 1 time in column. Make a new spreadsheet with repeated identifiers and associated information.
 
-*Reshape sheet*
+## Reshape sheet
 
 **basicPivot.py**
 
@@ -78,7 +78,6 @@ Uses pandas pivot_table to combine subject strings by identifier number. Then a 
 |0001          |horses;goats;cows    |
 |0002          |Mars;Venus           |
 
-
 **explodeColumnWithList.py**
 
 This script takes a column with many values in each cell, and creates a new row for each value, duplicating its original identifier or associated values.
@@ -105,7 +104,7 @@ This script melts a wide CSV with multiple column pairs of an auth_name and voca
 
 This script generates a new CSV for each unique value found in a specific column of a CSV. The new CSVs are named based on the unique values found.
 
-*Multiple spreadsheets*
+## Multiple spreadsheets
 
 **combineMultipleSpreadsheets.py**
 
@@ -119,7 +118,7 @@ This script looks at multiple spreadsheets in a folder, and counts how many valu
 
 This script combines multiple spreadsheet from a folder into a dataframe, and makes a new spreadsheet for each column found in the combined dataframe.
 
-*Merge sheets*
+## Merge sheets
 
 **mergeTwoSheetsWithoutPandas.py**
 
@@ -129,7 +128,7 @@ This scripts matches information from two CSVs by their identifiers.
 
 This script uses a pandas left merge (left join) to join information from CSV 2 to CSV 1 based on identifier.
 
-*Match values*
+## Match values
 
 **findFuzzyMatchesWithinAList.py**
 
@@ -143,7 +142,7 @@ This script takes a list of unique values from a CSV, and searches for them in 2
 
 This script uses langdetect to guess the language of the items from their titles.
 
-*Reformat values*
+## Reformat values
 
 **reformatInversedNames.py**
 
@@ -168,7 +167,7 @@ The script makes a new CSV file (namesStandardized.csv) with two columns called 
 |Aberra, A.A.	                    |Add space after period       |
 |Albert, Jane, b. 1889            |Not updated to RDA standards |
 
-*Testing*
+## Testing
 
 **generateNumberedCopiesofFile.py**
 
