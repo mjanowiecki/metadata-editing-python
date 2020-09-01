@@ -1,7 +1,6 @@
 import argparse
 import chardet
 import pandas as pd
-from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -11,7 +10,10 @@ if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
-columnToCheck = ''
+if args.columnName:
+    columnName = args.columnName
+else:
+    columnName = input('Enter column to check for duplicates: ')
 
 
 def find_encoding(fname):
@@ -25,11 +27,9 @@ my_encoding = find_encoding(filename)
 print(my_encoding)
 
 df = pd.read_csv(filename, encoding=my_encoding)
-df[columnToCheck] = df[columnToCheck].str.upper()
 
-dupRows = df[df.duplicated([columnToCheck], keep=False)]
+dupRows = df[df.duplicated([columnName], keep=False)]
 
 print(dupRows)
 if dupRows.empty is False:
-    dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-    dupRows.to_csv(path_or_buf='duplicatedValues_'+dt+'.csv', index=False)
+    dupRows.to_csv(path_or_buf='duplicatedValues_'+filename, index=False)

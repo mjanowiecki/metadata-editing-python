@@ -21,10 +21,10 @@ print(df_1.columns)
 df_2 = pd.read_csv(filename2, header=0)
 print(df_2.columns)
 
-frame = pd.merge(df_1, df_2, how='left', on=['fast_id'], suffixes=('_1', '_2'))
 
+frame = pd.merge(df_1, df_2, how='left', on=['identifier'], suffixes=('_1', '_2'))
 
-frame = frame.reindex(sorted(frame.columns), axis=1)
+# frame = frame.reindex(sorted(frame.columns), axis=1)
 print(frame.columns)
 print(frame.head)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')

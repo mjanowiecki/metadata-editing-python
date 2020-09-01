@@ -11,10 +11,11 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-df_1 = pd.read_csv(filename, header=0)
+df = pd.read_csv(filename, header=0)
 
-unique_1 = df_1.people.unique()
-unique_2 = df_1.corporate.unique()
+# Get unique names.
+unique_1 = df.people.unique()
+unique_2 = df.corporate.unique()
 
 unique_1 = list(unique_1)
 unique_2 = list(unique_2)
@@ -37,26 +38,27 @@ for x in unique_2:
 
 
 names = sorted(names)
+url_prefix = 'https://catalyst.library.jhu.edu/catalog/bib_'
 
 newdict = {}
 for x in names:
-    for index, value in df_1.people.iteritems():
+    for index, value in df.people.iteritems():
         value = str(value)
         if x in value:
             data = newdict.get(x)
-            valuetoadd = df_1.at[index, 'bib']
-            valuetoadd = 'https://catalyst.library.jhu.edu/catalog/bib_'+str(valuetoadd)
+            valuetoadd = df.at[index, 'bib']
+            valuetoadd = url_prefix+str(valuetoadd)
             if data:
                 data.append(valuetoadd)
                 newdict[x] = data
             else:
                 newdict[x] = [valuetoadd]
-    for index, value in df_1.corporate.iteritems():
+    for index, value in df.corporate.iteritems():
         value = str(value)
         if x in value:
             data = newdict.get(x)
-            valuetoadd = df_1.at[index, 'bib']
-            valuetoadd = 'https://catalyst.library.jhu.edu/catalog/bib_'+str(valuetoadd)
+            valuetoadd = df.at[index, 'bib']
+            valuetoadd = url_prefix+str(valuetoadd)
             if data and valuetoadd:
                 data.append(valuetoadd)
                 newdict[x] = data

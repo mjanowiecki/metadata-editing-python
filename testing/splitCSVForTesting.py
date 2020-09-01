@@ -23,5 +23,6 @@ while total_rows > 0:
     print(current_row - x)
     print(current_row)
     newDF = pd.DataFrame()
-    newDF = newDF.append((df.iloc[(current_row - x):current_row]), ignore_index=True, sort=True)
+    newDF = newDF.append((df.iloc[(current_row - x):current_row]),
+                         ignore_index=True, sort=True)
     newDF.to_csv(path_or_buf='test'+str(current_row)+'.csv', index=False)

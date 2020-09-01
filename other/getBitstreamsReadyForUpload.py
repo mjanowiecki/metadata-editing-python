@@ -1,6 +1,5 @@
 import csv
 import argparse
-import ast
 from datetime import datetime
 
 parser = argparse.ArgumentParser()

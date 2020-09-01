@@ -1,7 +1,6 @@
 import csv
 import argparse
 from datetime import datetime
-from fuzzywuzzy import fuzz
 import pandas as pd
 
 parser = argparse.ArgumentParser()
@@ -57,8 +56,8 @@ with open(filename) as itemMetadataFile:
         all_rows.append(little_dict)
 
 
-
 df = pd.DataFrame.from_dict(all_rows)
 print(df.head(15))
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-df.to_csv(path_or_buf='confirmChanges_'+dt+'.csv', header='column_names', encoding='utf-8', sep=',', index=False)
+df.to_csv(path_or_buf='confirmChanges_'+dt+'.csv', header='column_names',
+          encoding='utf-8', sep=',', index=False)
