@@ -13,4 +13,4 @@ else:
 df = pd.read_csv(filename)
 df = df.drop_duplicates()
 
-df.to_csv(path_or_buf='noDuplicates_'+filename, index=False)
+df.to_csv(path_or_buf='noDuplicateRows_'+filename, index=False)

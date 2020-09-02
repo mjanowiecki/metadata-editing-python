@@ -3,6 +3,7 @@ import pandas as pd
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
+parser.add_argument('-c', '--columnName')
 args = parser.parse_args()
 
 if args.file:

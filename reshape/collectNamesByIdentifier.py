@@ -5,6 +5,7 @@ from datetime import datetime
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')  # Original data.
 parser.add_argument('-f2', '--file2')  # New name information.
+parser.add_argument('-id', '--identifier')
 args = parser.parse_args()
 
 if args.file:
