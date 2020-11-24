@@ -12,12 +12,14 @@ if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
+
 if args.columnName:
     columnName = args.columnName
 else:
     columnName = input('Enter column to explode: ')
-if args.id:
-    identifier = args.id
+
+if args.identifier:
+    identifier = args.identifier
 else:
     identifier = input('Enter name of identifier: ')
 

@@ -25,4 +25,4 @@ for filename in os.listdir(directory):
 newDF = newDF.drop_duplicates()
 print(newDF.head)
 
-newDF.to_csv(path_or_buf='combinedCSV_'+dt+'.csv', index=False)
+newDF.to_csv(path_or_buf='combined_'+dt+'.csv', index=False)

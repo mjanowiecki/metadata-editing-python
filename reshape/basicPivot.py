@@ -19,7 +19,8 @@ print(df.head)
 pivotIndex = ''
 newColumns = ''
 newValues = ''
-pivot = pd.pivot_table(df, index=pivotIndex, columns=newColumns, values=newValues,
+pivot = pd.pivot_table(df, index=pivotIndex,
+                       values=newValues, columns=newColumns
                        aggfunc=lambda x: '|'.join(str(v) for v in x))
 
 df_p = pd.DataFrame(pivot)
