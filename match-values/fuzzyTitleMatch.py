@@ -7,6 +7,7 @@ import pandas as pd
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 parser.add_argument('-f2', '--file2')
+parser.add_argument('-c', '--columnName')
 args = parser.parse_args()
 
 if args.file:
@@ -17,17 +18,20 @@ if args.file2:
     filename2 = args.file2
 else:
     filename2 = input('Enter second filename (including \'.csv\'): ')
+if args.columnName:
+    columnName = args.columnName
+else:
+    # name must be the same for file1 + file2
+    columnName = input('Enter column to match: ')
 
 df_1 = pd.read_csv(filename, header=0)
-print(df_1.columns)
 df_2 = pd.read_csv(filename2, header=0)
-print(df_2.columns)
 
-df_1.title.str.strip()
-df_2.title.str.strip()
+df_1[columnName].str.strip()
+df_2[columnName].str.strip()
 
-df_1.sort_values(by=['title'], inplace=True)
-df_2.sort_values(by=['title'], inplace=True)
+df_1.sort_values(by=[columnName], inplace=True)
+df_2.sort_values(by=[columnName], inplace=True)
 
 
 def fuzzy_merge(df_1, df_2, key1, key2):
@@ -43,13 +47,19 @@ def fuzzy_merge(df_1, df_2, key1, key2):
 
     m = df_1[key1].apply(lambda x: process.extract(x, list_2,
                          scorer=fuzz.ratio, limit=2))
-    df_1['matches'] = m
-    df_1['match1'] = df_1.matches.str.get(0)
-    df_1['match2'] = df_1.matches.str.get(1)
+    new = pd.DataFrame({'match1': m.str[0], 'match2': m.str[1]})
+
+    new['value1'] = new.match1.str[0]
+    new['ratio1'] = new.match1.str[1]
+    new['value2'] = new.match2.str[0]
+    new['ratio2'] = new.match2.str[1]
+    del new['match1']
+    del new['match2']
+    df_1 = df_1.join(new)
+
     return df_1
 
 
-frame = fuzzy_merge(df_1, df_2, 'title', 'title')
-
+frame = fuzzy_merge(df_1, df_2, columnName, columnName)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-frame.to_csv('fuzzyJoin_'+dt+'.csv', index=False)
+frame.to_csv('fuzzyMatchFor'+columnName+'_'+dt+'.csv', index=False)
