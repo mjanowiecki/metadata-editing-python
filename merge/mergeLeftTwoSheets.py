@@ -28,9 +28,8 @@ df_2 = pd.read_csv(filename2, header=0)
 print(df_2.columns)
 
 
-frame = pd.merge(df_1, df_2, how='left', on=[columnName], suffixes=('_1', '_2'))
+frame = pd.merge(df_1, df_2, how='left', on=columnName, suffixes=('_1', '_2'))
 
-frame = frame.drop_duplicates()
 
 # frame = frame.reindex(sorted(frame.columns), axis=1)
 print(frame.columns)
