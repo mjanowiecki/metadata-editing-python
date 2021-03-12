@@ -36,12 +36,12 @@ print(frame_count)
 merged = []
 for count, frame in enumerate(frames):
     if count == 0:
-        new_df = pd.merge(frame, frames[count+1], how='left', on=columnName)
+        new_df = pd.merge(frame, frames[count+1], how='outer', on=columnName)
         merged.append(new_df)
     elif count == 1:
         pass
     else:
-        new_df = pd.merge(merged[0], frame, how='left', on=columnName)
+        new_df = pd.merge(merged[0], frame, how='outer', on=columnName)
         merged[0] = new_df
 
 print(merged[0])

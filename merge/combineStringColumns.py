@@ -15,7 +15,7 @@ else:
 df_1 = pd.read_csv(filename, header=0)
 print(df_1.columns)
 
-columnsToCombine = ['desc518', 'color', 'desc508', 'desc511']
+columnsToCombine = []
 
 for column in columnsToCombine:
     df_1[column] = df_1[column].astype(str)

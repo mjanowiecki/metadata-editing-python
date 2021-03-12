@@ -14,7 +14,7 @@ else:
 df = pd.read_csv(filename)
 
 # List of columns that need to be completed.
-column_list = ['title', 'bounding_box', 'spatial_coverage', 'subjects',
+column_list = []
 
 
 # If any of the columns has a value (not nan), row is added to newData.
