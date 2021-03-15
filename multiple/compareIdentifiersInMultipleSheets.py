@@ -50,5 +50,4 @@ for count, frame in enumerate(frames):
 df = pd.DataFrame.from_dict(merged, orient='index')
 print(df.head)
 
-# Create updated file1 with column identifying identifiers found in file2.
 df.to_csv('compareIds.csv')
