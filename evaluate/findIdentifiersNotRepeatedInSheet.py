@@ -14,7 +14,7 @@ else:
 if args.columnName:
     columnName = args.columnName
 else:
-    columnName = input('Enter column to merge on: ')
+    columnName = input('Enter column with identifier: ')
 
 df_1 = pd.read_csv(filename, header=0)
 

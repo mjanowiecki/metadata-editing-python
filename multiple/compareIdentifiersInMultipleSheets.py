@@ -38,7 +38,7 @@ print(chart)
 
 merged = {}
 for count, frame in enumerate(frames):
-    idList = frame['uri'].to_list()
+    idList = frame[columnName].to_list()
     for id in idList:
         if merged.get(id) is None:
             merged[id] = str(count)
