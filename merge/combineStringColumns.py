@@ -17,11 +17,21 @@ print(df_1.columns)
 
 columnsToCombine = []
 
-for column in columnsToCombine:
-    df_1[column] = df_1[column].astype(str)
 
-df_1['combined'] = df_1[columnsToCombine].agg(' '.join, axis=1)
+def combineByRow(row):
+    all_items = []
+    for column in columnsToCombine:
+        if pd.notnull(row[column]):
+            for value in str(row[column]).split('|'):
+                all_items.append(value)
+    all_items = list(set(all_items))
+    all_items = '|'.join(all_items)
+    return all_items
+
+
+df_1['combined'] = df_1.apply(lambda row: combineByRow(row), axis=1)
+
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 filename = filename[:-4]
-df_1.to_csv(filename+'_mergedColum'+dt+'.csv')
+df_1.to_csv(filename+'_mergedColumn'+dt+'.csv')

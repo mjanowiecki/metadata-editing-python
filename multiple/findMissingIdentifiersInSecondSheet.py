@@ -40,18 +40,22 @@ for index, item in duplicates_2.items():
         print(index, item)
 
 # Finds any identifers in file 1, but missing from file 2.
-missing = set(id_1) - set(id_2)
+unique_1 = df[identifier].unique()
+unique_2 = df_2[identifier].unique()
+unique_1 = list(unique_1)
+unique_2 = list(unique_2)
+print(len(unique_1))
+print(len(unique_2))
+
+missing = set(unique_1) - set(unique_2)
 print(len(missing))
 print(missing)
-
 
 # Creates dictionary of missing identifiers information using file 1.
 new_dict = []
 for index, data in df.iterrows():
-    for k, v in data.items():
-        if k == identifier:
-            if v in missing:
-                new_dict.append(data)
+    if data[identifier] in missing:
+        new_dict.append(data)
 
 # Prints dictionary of missing info to csv.
 newDF = pd.DataFrame.from_dict(new_dict)
