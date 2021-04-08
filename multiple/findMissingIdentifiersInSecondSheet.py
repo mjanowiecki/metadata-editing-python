@@ -32,12 +32,12 @@ id_2 = df_2[identifier].to_list()
 duplicates = df[identifier].duplicated()
 for index, item in duplicates.items():
     if item:
-        print(index, item)
+        print('first file', index, item)
 
 duplicates_2 = df_2[identifier].duplicated()
 for index, item in duplicates_2.items():
     if item:
-        print(index, item)
+        print('second file', index, item)
 
 # Finds any identifers in file 1, but missing from file 2.
 unique_1 = df[identifier].unique()
@@ -48,6 +48,7 @@ print(len(unique_1))
 print(len(unique_2))
 
 missing = set(unique_1) - set(unique_2)
+missing = list(missing)
 print(len(missing))
 print(missing)
 
