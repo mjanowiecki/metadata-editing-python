@@ -1,6 +1,7 @@
 import pandas as pd
 import argparse
 from datetime import datetime
+import ast
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -26,8 +27,14 @@ else:
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 df_1 = pd.read_csv(filename, header=0)
-df = df_1[[identifier, columnName]].copy()
-df[columnName] = df[columnName].str.split('|')
+df_1 = df_1.set_index(['uri', 'matchedPair'], inplace=False)
+print(df_1.columns)
+df = df_1[['matchedPair1']].copy()
+# If column is formatted as string.
+# df[columnName] = df[columnName].str.split('|')
+
+# If column is formatted as list.
+df[columnName] = df[columnName].apply(ast.literal_eval)
 df.reset_index()
 df = df.explode(columnName)
 

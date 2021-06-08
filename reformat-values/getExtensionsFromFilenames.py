@@ -1,0 +1,31 @@
+import argparse
+from datetime import datetime
+import pandas as pd
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-f', '--file')
+args = parser.parse_args()
+
+if args.file:
+    filename = args.file
+else:
+    filename = input('Enter first filename (including \'.csv\'): ')
+
+
+df = pd.read_csv(filename)
+
+allItems = []
+for index, row in df.iterrows():
+    row = row
+    filename = row['filename']
+    if pd.notna(filename):
+        fileList = filename.rsplit('.', 1)
+        name = fileList[0]
+        ext = fileList[1]
+        row['ext'] = ext
+        allItems.append(row)
+
+
+updated_df = pd.DataFrame.from_dict(allItems)
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+updated_df.to_csv('matchedPairs_'+dt+'.csv')

@@ -29,7 +29,7 @@ print(df_2.columns)
 # df_2[columnName] = df_2[columnName].astype('str')
 # df_1[columnName] = df_1[columnName].astype('str')
 
-frame = pd.merge(df_1, df_2, how='left', on=columnName, suffixes=('_1', '_2'))
+frame = pd.merge(df_1, df_2, how='left', on=[columnName], suffixes=('_1', '_2'))
 
 # frame = frame.reindex(sorted(frame.columns), axis=1)
 print(frame.columns)

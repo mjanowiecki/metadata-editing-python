@@ -15,8 +15,8 @@ if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
-if args.id:
-    identifier = args.id
+if args.identifier:
+    identifier = args.identifier
 else:
     identifier = input('Enter name of identifier column: ')
 
