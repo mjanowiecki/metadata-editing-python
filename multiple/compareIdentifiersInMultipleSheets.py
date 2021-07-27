@@ -26,6 +26,7 @@ def makeDataFrame(frame, filename):
 frames = []
 chart = {}
 for count, filename in enumerate(os.listdir(directory)):
+    print(count)
     filename = directory + "/" + filename
     if filename.endswith('.csv'):
         makeDataFrame("df_{}".format(count), filename)

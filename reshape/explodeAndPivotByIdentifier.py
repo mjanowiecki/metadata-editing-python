@@ -41,6 +41,7 @@ df = pd.read_csv(filename, header=0)
 
 # Explode column2.
 df[column2] = df[column2].astype('str')
+df[column2] = df[column2].str.strip()
 df[column2] = df[column2].str.split('|')
 df.reset_index()
 df = df.explode(column2)
