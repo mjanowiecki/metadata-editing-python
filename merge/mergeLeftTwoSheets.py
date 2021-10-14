@@ -31,9 +31,9 @@ print(df_2.columns)
 
 frame = pd.merge(df_1, df_2, how='left', on=[columnName], suffixes=('_1', '_2'))
 
-frame = frame.reindex(sorted(frame.columns), axis=1)
+# frame = frame.reindex(sorted(frame.columns), axis=1)
 frame.drop_duplicates(inplace=True)
-print(frame.columns)
+# print(frame.columns)
 print(frame.head)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 frame.to_csv(path_or_buf='mergedCSV_'+dt+'.csv')

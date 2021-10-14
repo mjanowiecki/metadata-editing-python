@@ -10,8 +10,9 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-column = 'barcode'
 df = pd.read_csv(filename)
-df[column] = df[column].str.strip()
+columns = list(df.columns.values)
+for column in columns:
+    df[column] = df[column].str.strip()
 
-df.to_csv(path_or_buf='noDuplicateRows_'+filename, index=False)
+df.to_csv('stripped_'+filename, index=False)

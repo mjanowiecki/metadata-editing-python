@@ -30,15 +30,15 @@ df_2 = pd.read_csv(filename2, header=0)
 
 unique_2 = df_2[identifier].unique()
 unique_2 = list(unique_2)
-
+print(len(unique_2))
 
 items = []
 count = 0
 for index, row in df_1.iterrows():
-    print(row)
     uri = row[identifier]
     if uri in unique_2:
         count = count + 1
+        print(row)
         pass
     else:
         items.append(row)
