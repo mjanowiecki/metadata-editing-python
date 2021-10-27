@@ -9,13 +9,13 @@ args = parser.parse_args()
 if args.file:
     filename = args.file
 else:
-    filename = input('Enter first filename (including \'.csv\'): ')
+    filename = input('Enter filename (including \'.csv\'): ')
 
 
 df_1 = pd.read_csv(filename, header=0)
 print(df_1.columns)
 
-columnsToCombine = []
+columnsToCombine = ['dc.title.alternative', 'dc.title.alternative.1']
 
 
 def combineByRow(row):
@@ -29,9 +29,9 @@ def combineByRow(row):
     return all_items
 
 
-df_1['combined'] = df_1.apply(lambda row: combineByRow(row), axis=1)
+df_1['title.alternative'] = df_1.apply(lambda row: combineByRow(row), axis=1)
 
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 filename = filename[:-4]
-df_1.to_csv(filename+'_mergedColumn'+dt+'.csv')
+df_1.to_csv(filename+'_mergedColumn'+dt+'.csv', index=False)

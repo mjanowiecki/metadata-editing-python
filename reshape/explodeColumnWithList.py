@@ -6,7 +6,6 @@ import ast
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 parser.add_argument('-c', '--columnName')
-parser.add_argument('-id', '--identifier')
 args = parser.parse_args()
 
 if args.file:
@@ -19,17 +18,9 @@ if args.columnName:
 else:
     columnName = input('Enter column to explode: ')
 
-if args.identifier:
-    identifier = args.identifier
-else:
-    identifier = input('Enter name of identifier: ')
-
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
-df_1 = pd.read_csv(filename, header=0)
-df_1 = df_1.set_index(['uri', 'matchedPair'], inplace=False)
-print(df_1.columns)
-df = df_1[['matchedPair1']].copy()
+df = pd.read_csv(filename, header=0)
 # If column is formatted as string.
 # df[columnName] = df[columnName].str.split('|')
 
