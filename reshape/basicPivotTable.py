@@ -41,11 +41,13 @@ print(df.head)
 # Smith, Ed     002|003
 # Smith, Jane   001
 
-
-pivot = df.pivot(index='city', columns='county', values='population')
-
+newColumns = ''
+pivot = pd.pivot_table(df, index=column2,
+                       values=column1,
+                       aggfunc=lambda x: '|'.join(str(v) for v in x))
 
 df_p = pd.DataFrame(pivot)
+df_p = df_p.reset_index()
 print(df_p.head)
 
 df_p.to_csv(path_or_buf='pivotedBy'+column2+'_'+dt+'.csv')

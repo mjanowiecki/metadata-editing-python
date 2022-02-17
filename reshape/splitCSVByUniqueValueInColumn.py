@@ -21,4 +21,5 @@ print(unique)
 for value in unique:
     newDF = df.loc[df[columnName] == value]
     print(newDF)
-    newDF.to_csv(path_or_buf=value+'.csv', index=False)
+    value = value.replace('/', '-')
+    newDF.to_csv(value+'.csv', index=False)

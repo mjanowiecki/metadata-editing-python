@@ -32,4 +32,4 @@ while total_rows > 0:
     newDF = pd.DataFrame()
     newDF = newDF.append((df.iloc[(current_row - x):current_row]),
                          ignore_index=True, sort=True)
-    newDF.to_csv('graphicPictorial_media_'+(str(loop)).zfill(2)+'.csv', index=False)
+    newDF.to_csv('allFiles_test_'+(str(loop)).zfill(2)+'.csv', index=False)

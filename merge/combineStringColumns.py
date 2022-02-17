@@ -15,7 +15,7 @@ else:
 df_1 = pd.read_csv(filename, header=0)
 print(df_1.columns)
 
-columnsToCombine = ['dc.title.alternative', 'dc.title.alternative.1']
+columnsToCombine = ['subject', 'person', 'geo_location', 'corporate_body']
 
 
 def combineByRow(row):

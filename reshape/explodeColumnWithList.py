@@ -22,10 +22,10 @@ dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 df = pd.read_csv(filename, header=0)
 # If column is formatted as string.
-# df[columnName] = df[columnName].str.split('|')
+df[columnName] = df[columnName].str.split(',')
 
 # If column is formatted as list.
-df[columnName] = df[columnName].apply(ast.literal_eval)
+# df[columnName] = df[columnName].apply(ast.literal_eval)
 df.reset_index()
 df = df.explode(columnName)
 

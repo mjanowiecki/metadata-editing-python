@@ -1,6 +1,5 @@
 import pandas as pd
 import argparse
-from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
