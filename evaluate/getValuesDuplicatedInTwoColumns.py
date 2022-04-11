@@ -32,4 +32,4 @@ for index, row in df_subset.iterrows():
 df = pd.DataFrame.from_dict(dupValues)
 print(df.head(15))
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-df.to_csv('dupValues_'+dt+'.csv', index=False)
+df.to_csv('duplicatedValues_'+dt+'.csv', index=False)
