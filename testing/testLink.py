@@ -15,8 +15,10 @@ else:
 df = pd.read_csv(filename)
 linkList = df['link'].tolist()
 
+bad_links = []
 for count, link in enumerate(linkList):
-    print(count)
     r = requests.head(link, timeout=120)
+    print(count, r.status_code)
     if r.status_code != 200:
-        print(link, r.status_code)
+        bad_links.append(link)
+print(bad_links)
