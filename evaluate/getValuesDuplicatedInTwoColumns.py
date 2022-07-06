@@ -12,10 +12,10 @@ else:
     filename = input('Enter filename (including \'.csv\'): ')
 
 columnsToCompare = ['old_description', 'new_description']
-id = ['dc.identifier.uri']
+identifier = ['dc.identifier.uri']
 
 df = pd.read_csv(filename)
-df_subset = df[columnsToCompare+id]
+df_subset = df[columnsToCompare + identifier]
 
 dupValues = []
 for index, row in df_subset.iterrows():

@@ -10,7 +10,7 @@ Converts unstructured lists of values and converts them into new structured list
 ***original***
 
 | value                                     | multipleTerms | possibleDelimiter |
-| ----------------------------------------- | ------------- | ----------------- |
+|-------------------------------------------|---------------|-------------------|
 | manuscripts; Sanskrit                     | y             | ;                 |
 | attention, learning,memory ,visual cortex | y             | ,                 |
 | corgis; golden retrievers;bulldog;        | y             | ;                 |
@@ -19,7 +19,7 @@ Converts unstructured lists of values and converts them into new structured list
 ***structuredAndUnstructuredLists.csv***
 
 | unstructuredList                          | structuredList                                       |
-| ----------------------------------------- | ---------------------------------------------------- |
+|-------------------------------------------|------------------------------------------------------|
 | manuscripts; Sanskrit                     | ['manuscripts', 'Sanskrit']                          |
 | attention, learning,memory ,visual cortex | ['attention', 'learning', 'memory', 'visual cortex'] |
 | corgis; golden retrievers;bulldog;        | ['corgis', 'golden retrievers', 'bulldog']           |
@@ -37,15 +37,15 @@ Deletes any rows with the exact same information from a CSV.
 ## evaluate
 
 **getDuplicatedIdentifiersInSheet.py**<br>
-Finds all identifiers in a spreadsheet that appear more than 1 time in column. Creates a new spreadsheet containing all of rows with duplicated identifiers.
+Finds all identifiers in a spreadsheet that appear more than 1 time in column. Creates a new spreadsheet containing all the rows with duplicated identifiers.
 
 **getDuplicateValuesInColumn.py**<br>
-Find any duplicated values within a column of a spreadsheet, and then creates a new spreadsheet containing all of the duplicated rows.
+Find any duplicated values within a column of a spreadsheet, and then creates a new spreadsheet containing all the duplicated rows.
 
 **getExtensionsFromFilenames.py**<br>Loops through a spreadsheet of filenames and add columns of just file extensions to original sheet.
 
 **getIdentifiersNotRepeatedInSheet.py**<br>
-Finds identifiers that only appear once in a sheet's column. Creates a new spreadsheet containing all of rows with non-repeated identifiers.
+Finds identifiers that only appear once in a sheet's column. Creates a new spreadsheet containing all the rows with non-repeated identifiers.
 
 **getInProgressAndCompletedRows.py**<br>
 Finds rows where the cell is empty (nan) for certain columns, and creates a new spreadsheet with these rows.
@@ -54,7 +54,7 @@ Finds rows where the cell is empty (nan) for certain columns, and creates a new 
 
 **getTotalValuesByIdentifierInSheet.py**<br>For spreadsheet where some identifiers are repeated in multiple rows, and each row has a number value , add up number values for each identifier.
 
-**getValuesDuplicatedInTwoColumns.py**<br>Get any values duplicated in two columns in a sheet..
+**getValuesDuplicatedInTwoColumns.py**<br>Get any values duplicated in two columns in a sheet.
 
 **printDuplicatedIdentifiersPairsInSheet.py**<br>Print any duplicated identifier pairs to terminal.
 
@@ -90,13 +90,13 @@ Finds rows where the cell is empty (nan) for certain columns, and creates a new 
 
 **getValueCountsForEachColumnInSheets.py**<br>Counts how many values are found in each column of spreadsheets in a directory. This count information is then added by handle (or filename) to a new CSV.
 
-**mergeMultipleSheetsOnIdentifier.py**<br>Merges multiple spreadsheets in a directory on an identifier column found in all of the sheets.
+**mergeMultipleSheetsOnIdentifier.py**<br>Merges multiple spreadsheets in a directory on an identifier column found in all the sheets.
 
 ## reformat-values
 
 **addPrefixToIdentifiers.py**<br>Adds a string prefix to an identifier column.
 
-**convertToETDF.py**<br>Converts a wide variety of date formats to ETDF using regular expressions.
+**convertToETDF.py**<br>Converts a wide variety of date formats to EDTF using regular expressions.
 
 **createFileNameFromCallNum.py**<br>Creates a unique filename based on an item's call number.
 
@@ -112,7 +112,7 @@ Finds rows where the cell is empty (nan) for certain columns, and creates a new 
 The script makes a new CSV file (namesStandardized.csv) with two columns called personalName and errorType. The second column tells the user the first punctuation/spacing error that exists for that name (see below for an example.) If there is more than one error, you only see the first error!
 
 | personalName                     | errorType                    |
-| -------------------------------- | ---------------------------- |
+|----------------------------------|------------------------------|
 | Abbott, David Phelps, 1863-1934. | Remove period                |
 | Abbott, Edwin Abbott,1838-1926.  | Remove period                |
 | Abelson, Paul,1878-              | Add space after comma        |
@@ -132,7 +132,7 @@ The script makes a new CSV file (namesStandardized.csv) with two columns called 
 ***original***
 
 | column1 | column2      |
-| ------- | ------------ |
+|---------|--------------|
 | 001     | Smith, Jane  |
 | 002     | Smith, Ed    |
 | 002     | Austen, Jane |
@@ -140,11 +140,11 @@ The script makes a new CSV file (namesStandardized.csv) with two columns called 
 
 ***new***
 
-| column2      | column1   |
-| ------------ | --------- |
-| Austen, Jane | 002       |
-| Smith, Ed    | 002 \|003 |
-| Smith, Jane  | 001       |
+| column2      | column1 |
+|--------------|---------|
+| Austen, Jane | 002     |
+| Smith, Ed    | 002 \   |003 |
+| Smith, Jane  | 001     |
 
 **collapseAllColumnsToOneColumn.py**
 
@@ -153,7 +153,7 @@ The script makes a new CSV file (namesStandardized.csv) with two columns called 
 ***original***
 
 | identifier | subject |
-| ---------- | ------- |
+|------------|---------|
 | 0001       | horses  |
 | 0001       | goats   |
 | 0001       | cows    |
@@ -163,7 +163,7 @@ The script makes a new CSV file (namesStandardized.csv) with two columns called 
 ***pivot_table***
 
 | identifier | subject           |
-| ---------- | ----------------- |
+|------------|-------------------|
 | 0001       | horses;goats;cows |
 | 0002       | Mars;Venus        |
 
@@ -191,14 +191,14 @@ The script makes a new CSV file (namesStandardized.csv) with two columns called 
 ***original***
 
 | bib  | 0_auth_name | 0_vocab_id | 1_auth_name | 1_vocab_id |
-| ---- | ----------- | ---------- | ----------- | ---------- |
+|------|-------------|------------|-------------|------------|
 | 0001 | horses      | 1003       | goats       | 20394      |
 | 0002 | Venus       | 839402     | Mars        | 9842718    |
 
 ***melted***
 
 | bib  | auth_name | vocab_id |
-| ---- | --------- | -------- |
+|------|-----------|----------|
 | 0001 | horses    | 1003     |
 | 0001 | goats     | 20394    |
 | 0002 | Venus     | 839402   |
@@ -212,6 +212,6 @@ The script makes a new CSV file (namesStandardized.csv) with two columns called 
 
 **getEveryNthRowFromCSV.py**<br>Collects every Nth row from a CSV to create a sample of data.
 
-**splitCSVForTesting.py**<br>Spilts a large spreadsheet evenly into ten CSVs for testing.
+**splitCSVForTesting.py**<br>Splits a large spreadsheet evenly into ten CSVs for testing.
 
 **testLink.py**<br>Tests URLs listed in spreadsheet to see if they work.

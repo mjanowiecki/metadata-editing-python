@@ -21,30 +21,30 @@ f = csv.writer(open('fuzzyListMatches_'+dt+'.csv', 'w', encoding='utf-8'))
 f2 = csv.writer(open('noMatches_'+dt+'.csv', 'w', encoding='utf-8'))
 
 
-def convertDictToList(dict):
+def convert_dict_to_list(dict_name):
     # Combine keys and values from dictionary into single list.
-    if dict:
-        dict1 = dict.copy()
-        valueList = list(dict1.values())
-        keyList = list(dict1.keys())
-        dictList = valueList + keyList
+    if dict_name:
+        dict1 = dict_name.copy()
+        value_list = list(dict1.values())
+        key_list = list(dict1.keys())
+        dict_list = value_list + key_list
     else:
-        dictList = []
-    return dictList
+        dict_list = []
+    return dict_list
 
 
-def checkIfDuplicates(listOfElems):
+def check_if_duplicates(element_list):
     # Check if given list contains any duplicates.
-    setList = set(listOfElems)
-    setList = list(setList)
-    difference = len(listOfElems) - len(setList)
+    set_list = set(element_list)
+    set_list = list(set_list)
+    difference = len(element_list) - len(set_list)
     return difference
 
 
-def notInDict(v1, v2, dict):
-    # Make sure v1 or v2 are not keys or values in dictonary.
-    if v1 and v2 not in dict.values():
-        if dict.get(v1) and matches.get(v2) is None:
+def not_in_dict(v1, v2, dict_name):
+    # Make sure v1 or v2 are not keys or values in dictionary.
+    if v1 and v2 not in dict_name.values():
+        if dict_name.get(v1) and matches.get(v2) is None:
             return True
 
 
@@ -55,10 +55,10 @@ with open(filename) as itemMetadataFile:
     itemMetadata = csv.DictReader(itemMetadataFile)
     for row in itemMetadata:
         # Get list of possible matches from csv.
-        list_to_combinate = row['bitstreams']
+        list_to_combine = row['bitstreams']
         handle = row['handle']
-        list_to_combinate = ast.literal_eval(list_to_combinate)
-        item_count = len(list_to_combinate)
+        list_to_combine = ast.literal_eval(list_to_combine)
+        item_count = len(list_to_combine)
         total_count = total_count + item_count
         ratio_matches = {}
         matches = {}
@@ -69,8 +69,8 @@ with open(filename) as itemMetadataFile:
         # Add any item matches as list value to ratio_matches.
         # Key is ratio + randomly generated 4 letter string.
         if item_count >= 2:
-            list_copy = list_to_combinate.copy()
-            for item in list_to_combinate:
+            list_copy = list_to_combine.copy()
+            for item in list_to_combine:
                 list_copy.remove(item)
                 if list_copy:
                     for item2 in list_copy:
@@ -83,17 +83,17 @@ with open(filename) as itemMetadataFile:
 
         # Check to see if any items are duplicated in dictionary values.
         if ratioList:
-            result = checkIfDuplicates(ratioList)
+            result = check_if_duplicates(ratioList)
             copy_ratio = ratio_matches.copy()
             for key, value in reversed(sorted(ratio_matches.items())):
                 v1_1 = value[0]
                 v1_2 = value[1]
                 key_int = int(key[:-4])
                 result = result
-                # If no duplicates, add item pair as k, v to dict 'matches'.
+                # If no duplicates, add item pair as k, v to dict_name 'matches'.
                 if result == 0:
                     matches[v1_1] = v1_2
-                # If duplicates, add item pair with highest ratio to 'matches'.
+                # If duplicates, add item pair with the highest ratio to 'matches'.
                 elif result > 0:
                     del copy_ratio[key]
                     if ratioList.count(v1_1) == 1 and ratioList.count(v1_2) == 1:
@@ -105,10 +105,10 @@ with open(filename) as itemMetadataFile:
                                 v2_2 = value2[1]
                                 key2_int = int(key2[:-4])
                                 if key_int >= key2_int:
-                                    if notInDict(v1_1, v1_2, matches):
+                                    if not_in_dict(v1_1, v1_2, matches):
                                         matches[v1_1] = v1_2
                                 elif key2_int > key_int:
-                                    if notInDict(v2_1, v2_2, matches):
+                                    if not_in_dict(v2_1, v2_2, matches):
                                         matches[v2_1] = v2_2
                                 else:
                                     pass
@@ -116,15 +116,15 @@ with open(filename) as itemMetadataFile:
                         print('ERROR')
 
         # Determine if any items from original list are unmatched.
-        dictList = convertDictToList(matches)
+        dictList = convert_dict_to_list(matches)
         set1 = set(dictList)
-        set2 = set(list_to_combinate)
+        set2 = set(list_to_combine)
         not_matched = list(set2.difference(set1))
-        # If unmatched, add to dicionary 'not_matched'.
+        # If unmatched, add to dictionary 'not_matched'.
         if not_matched:
             no_match[handle] = not_matched
 
-        # Make spreadsheets from 'matches' and 'not_matched' dicionaries.
+        # Make spreadsheets from 'matches' and 'not_matched' dictionaries.
         for key, value in matches.items():
             f.writerow([handle]+[key]+[value])
             matched_count = matched_count + 2

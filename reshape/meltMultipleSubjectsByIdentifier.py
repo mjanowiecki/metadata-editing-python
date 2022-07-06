@@ -11,8 +11,6 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-
 df_1 = pd.read_csv(filename, header=0)
 df_1['pair0'] = df_1['0_auth_name']+'|'+df_1['0_vocab_id']
 df_1['pair1'] = df_1['1_auth_name']+'|'+df_1['1_vocab_id']

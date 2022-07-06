@@ -18,7 +18,7 @@ with open(filename) as itemMetadataFile:
     itemMetadata = csv.DictReader(itemMetadataFile)
     for row in itemMetadata:
         row = row
-        date = row['etdf']
+        date = row['edtf']
         date = date.strip()
         match1 = re.search(r'^\d\d\d\d$', date)
         match2 = re.search(r'^\d\d\d\d\-\d\d-\d\d$', date)

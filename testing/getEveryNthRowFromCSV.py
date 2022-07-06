@@ -5,7 +5,7 @@ import itertools
 from datetime import datetime
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--file', help='enter filename to retreive')
+parser.add_argument('-f', '--file', help='enter filename to retrieve')
 args = parser.parse_args()
 
 if args.file:

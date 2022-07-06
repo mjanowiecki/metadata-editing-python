@@ -17,11 +17,11 @@ else:
     columnName = input('Enter column to check for duplicates: ')
 
 
-def find_encoding(fname):
-    r_file = open(fname, 'rb').read()
+def find_encoding(name_file):
+    r_file = open(name_file, 'rb').read()
     result = chardet.detect(r_file)
-    charenc = result['encoding']
-    return charenc
+    character_encoding = result['encoding']
+    return character_encoding
 
 
 my_encoding = find_encoding(filename)

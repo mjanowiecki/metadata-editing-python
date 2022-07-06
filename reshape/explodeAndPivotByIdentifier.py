@@ -19,7 +19,7 @@ else:
 if args.column2:
     column2 = args.column2
 else:
-    column2 = input('Enter column to aggreate by: ')
+    column2 = input('Enter column to aggregate by: ')
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 

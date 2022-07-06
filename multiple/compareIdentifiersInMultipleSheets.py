@@ -18,9 +18,9 @@ else:
     columnName = input('Enter column to merge on: ')
 
 
-def makeDataFrame(frame, filename):
-    frame = pd.read_csv(filename)
-    frames.append(frame)
+def make_data_frame(frame_name, name_file):
+    frame_name = pd.read_csv(name_file)
+    frames.append(frame_name)
 
 
 frames = []
@@ -29,7 +29,7 @@ for count, filename in enumerate(os.listdir(directory)):
     print(count)
     filename = directory + "/" + filename
     if filename.endswith('.csv'):
-        makeDataFrame("df_{}".format(count), filename)
+        make_data_frame("df_{}".format(count), filename)
         chart[filename] = count
 
 frame_count = len(frames)
@@ -40,13 +40,13 @@ print(chart)
 merged = {}
 for count, frame in enumerate(frames):
     idList = frame[columnName].to_list()
-    for id in idList:
-        if merged.get(id) is None:
-            merged[id] = str(count)
+    for identifier in idList:
+        if merged.get(identifier) is None:
+            merged[identifier] = str(count)
         else:
-            value = merged[id]
+            value = merged[identifier]
             value = value+'|'+str(count)
-            merged[id] = value
+            merged[identifier] = value
 
 df = pd.DataFrame.from_dict(merged, orient='index')
 print(df.head)

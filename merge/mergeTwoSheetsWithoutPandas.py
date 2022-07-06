@@ -36,10 +36,10 @@ with open(filename) as itemMetadataFile:
         print(identifier)
         with open(filename2) as otherMetadata:
             otherMetadata = csv.DictReader(otherMetadata)
-            for row in otherMetadata:
-                other_identifier = row['dc.identifier.other']
-                uri = row['uri']
-                itemID = row['itemID']
+            for other_row in otherMetadata:
+                other_identifier = other_row['dc.identifier.other']
+                uri = other_row['uri']
+                itemID = other_row['itemID']
                 if identifier == other_identifier:
                     f.writerow([identifier]+[uri]+[itemID])
                     print("found: "+identifier)

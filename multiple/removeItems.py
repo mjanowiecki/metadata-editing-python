@@ -39,11 +39,11 @@ print("Remaining id count should be {}.".format(remainingIDs))
 allItems = []
 for count, row in df_2.iterrows():
     row = row
-    id = row[identifier]
-    if id in toRemove:
-        print(id)
-    else:
+    id_value = row[identifier]
+    if id not in toRemove:
         allItems.append(row)
+    else:
+        print(id_value)
 
 updated_df = pd.DataFrame.from_dict(allItems)
 actualRemainingIDs = updated_df[identifier].unique().tolist()

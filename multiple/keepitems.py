@@ -40,11 +40,11 @@ allItems = []
 missing = []
 for count, row in df_2.iterrows():
     row = row
-    id = row[identifier]
-    if id in toKeep:
+    id_value = row[identifier]
+    if id_value in toKeep:
         allItems.append(row)
     else:
-        missing.append(id)
+        missing.append(id_value)
 
 updated_df = pd.DataFrame.from_dict(allItems)
 missing = list(set(missing))

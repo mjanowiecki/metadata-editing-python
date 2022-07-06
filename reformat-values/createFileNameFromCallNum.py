@@ -46,8 +46,8 @@ for index, row in df.iterrows():
         call_num = call_num.replace("-_", "_")
         call_num = call_num.replace("_-", "_")
         if pd.notna(extra):
-            print(call_num +"_"+extra)
-            row['filename'] = call_num +"_"+extra
+            print(call_num+"_"+extra)
+            row['filename'] = call_num+"_"+extra
         else:
             print(call_num)
             row['filename'] = call_num

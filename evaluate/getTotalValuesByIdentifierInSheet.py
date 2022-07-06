@@ -22,23 +22,23 @@ else:
 
 df = pd.read_csv(filename, header=0)
 
-# Count how many time the identifier appears in the df.
+# Count how many times the identifier appears in the df.
 # Returns dataframe "counts" with id and value_counts.
 counts = df[identifier].value_counts()
 print(counts.head)
 
 
 duplicateList = []
-for id, count in counts.iteritems():
-    print(id, count)
+for identifier, count in counts.iteritems():
+    print(identifier, count)
     if count > 1:
         # If id appears more than once, create temporary dataframe.
         # Count how many times that id had column where type == "map".
-        df_temp = df.loc[df[identifier] == id]
+        df_temp = df.loc[df[identifier] == identifier]
         maps = len(df_temp[df_temp.type == 'map'])
         # If type == map more than 1 time, create dictionary and add to list.
         if maps > 1:
-            id = id.replace('https://jscholarship.library.jhu.edu/handle/', '')
+            identifier = identifier.replace('https://jscholarship.library.jhu.edu/handle/', '')
             duplicateList.append({identifier: id, 'type': 'multiple',
                                  'numberOfMaps': maps})
 

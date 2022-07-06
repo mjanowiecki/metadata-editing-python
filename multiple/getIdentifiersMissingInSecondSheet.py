@@ -39,7 +39,7 @@ for index, item in duplicates_2.items():
     if item:
         print('second file', index, item)
 
-# Finds any identifers in file 1, but missing from file 2.
+# Finds any identifiers in file 1, but missing from file 2.
 unique_1 = df[identifier].unique()
 unique_2 = df_2[identifier].unique()
 unique_1 = list(unique_1)

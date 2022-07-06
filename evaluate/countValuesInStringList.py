@@ -28,7 +28,7 @@ df = pd.read_csv(filename, header=0)
 allItems = []
 for count, row in df.iterrows():
     row = row
-    id = row[column1]
+    identifier = row[column1]
     values = row[column2]
     values = str(values).split('|')
     total_values = len(set(values))

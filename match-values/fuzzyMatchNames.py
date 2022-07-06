@@ -16,7 +16,7 @@ else:
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 
-def addToDict(key):
+def add_to_dict(key):
     value = row[key]
     value = value.split('|')
     name_dict[key] = value
@@ -29,12 +29,12 @@ with open(filename) as itemMetadataFile:
         allNames = row['names_fixed']
         allNames = allNames.split('|')
         name_dict = {}
-        addToDict('director')
-        addToDict('producer')
-        addToDict('announcer')
-        addToDict('presenter')
-        addToDict('writer')
-        addToDict('narrator')
+        add_to_dict('director')
+        add_to_dict('producer')
+        add_to_dict('announcer')
+        add_to_dict('presenter')
+        add_to_dict('writer')
+        add_to_dict('narrator')
         values = name_dict.values()
         values = [v for little_list in values for v in little_list if v]
         values = set(values)
@@ -51,20 +51,20 @@ with open(filename) as itemMetadataFile:
                 highest = ratioValues[0]
                 trueRatio = highest[:3]
                 trueRatio = int(trueRatio)
-                highestpair = ratio_dict.get(highest)
+                highest_pair = ratio_dict.get(highest)
                 if trueRatio > 50:
-                    highestpair = ratio_dict.get(highest)
+                    highest_pair = ratio_dict.get(highest)
                     print(trueRatio)
-                    print(highestpair)
+                    print(highest_pair)
                     for k, v in name_dict.items():
                         for count, item in enumerate(v):
-                            if item == highestpair[1]:
-                                v[count] = highestpair[0]
+                            if item == highest_pair[1]:
+                                v[count] = highest_pair[0]
                                 name_dict[k] = v
             except IndexError:
                 pass
-        addToDict('bib')
-        addToDict('names_fixed')
+        add_to_dict('bib')
+        add_to_dict('names_fixed')
         for k, v in name_dict.items():
             v = '|'.join(v)
             name_dict[k] = v

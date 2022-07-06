@@ -41,12 +41,12 @@ frame.reset_index(inplace=True)
 
 allItems = []
 for index, row in frame.iterrows():
-    id = row[identifier]
-    if id in sheet_1:
+    id_value = row[identifier]
+    if id_value in sheet_1:
         row['where'] = 'sheet1 only'
-    elif id in sheet_2:
+    elif id_value in sheet_2:
         row['where'] = 'sheet2 only'
-    elif id in both_sheets:
+    elif id_value in both_sheets:
         row['where'] = 'both sheets'
     else:
         row['where'] = 'error'

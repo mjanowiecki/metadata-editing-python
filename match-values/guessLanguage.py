@@ -15,7 +15,7 @@ else:
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 f = csv.writer(open('languageDetected_'+dt+'.csv', 'w'))
-f.writerow(['itemID']+['uri']+['collectionName']+['title']+['type']+['language'])
+f.writerow(['itemID']+['uri']+['collectionName']+['title']+['item_type']+['language'])
 
 with open(filename) as itemMetadataFile:
     itemMetadata = csv.DictReader(itemMetadataFile)
@@ -24,25 +24,25 @@ with open(filename) as itemMetadataFile:
         uri = row['uri']
         collectionName = row['collectionName']
         title = row['title']
-        type = row['type'].strip()
+        item_type = row['type'].strip()
         if title.isupper():
             title = title.title()
         title_length = len(title)
         if title_length > 20:
             probabilities = detect_langs(title)
-            matchfound = ''
+            match_found = ''
             for probability in probabilities:
                 probability = str(probability)
                 language = probability[:2]
                 percent = probability[3:]
                 percent = float(percent)
                 if percent > .9:
-                    f.writerow([itemID]+[uri]+[collectionName]+[title]+[type]+[language])
-                    matchfound == 'true'
+                    f.writerow([itemID] + [uri] + [collectionName] + [title] + [item_type] + [language])
+                    match_found == 'true'
                     break
                 else:
-                    matchfound = 'false'
-            if matchfound == 'false':
-                f.writerow([itemID]+[uri]+[collectionName]+[title]+[type]+[probabilities])
+                    match_found = 'false'
+            if match_found == 'false':
+                f.writerow([itemID] + [uri] + [collectionName] + [title] + [item_type] + [probabilities])
         else:
-            f.writerow([itemID]+[uri]+[collectionName]+[title]+[type]+['none'])
+            f.writerow([itemID] + [uri] + [collectionName] + [title] + [item_type] + ['none'])

@@ -13,14 +13,14 @@ else:
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
-f = csv.writer(open('expandedIdentifiers'+filename, 'w'))
-f.writerow(['identifier']+['dc.identifier.other'])
+f = csv.writer(open('expandedIdentifiers' + filename, 'w'))
+f.writerow(['identifier'] + ['dc.identifier.other'])
 
 with open(filename) as itemMetadataFile:
     itemMetadata = csv.DictReader(itemMetadataFile)
     for row in itemMetadata:
         identifier = row['identifier']
-        zidentifier = str(identifier).zfill(5)
+        zfill_identifier = str(identifier).zfill(5)
         prefix = 'jhu_coll-0002_'
-        expandedId = prefix+zidentifier
-        f.writerow([identifier]+[expandedId])
+        expandedId = prefix + zfill_identifier
+        f.writerow([identifier] + [expandedId])

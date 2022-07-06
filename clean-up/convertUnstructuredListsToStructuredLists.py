@@ -4,7 +4,7 @@ import argparse
 from datetime import datetime
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--file', help='file_name to retreive')
+parser.add_argument('-f', '--file', help='file_name to retrieve')
 args = parser.parse_args()
 
 if args.file:
@@ -15,15 +15,14 @@ else:
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 
-def splitValues(delimiter):
+def split_values(delimiter):
     unstructured_values_split = unstructured_values.split(delimiter)
     unstructured_values_edited = []
     for each_value in unstructured_values_split:
         each_value = each_value.strip()
         unstructured_values_edited.append(each_value)
-    valuesDict = {}
-    valuesDict[unstructured_values] = unstructured_values_edited
-    for k, v in valuesDict.items():
+    values_dict = {unstructured_values: unstructured_values_edited}
+    for k, v in values_dict.items():
         f.writerow([k] + [v])
 
 
@@ -39,6 +38,6 @@ with open(file_name) as unstructuredList_file:
         match1 = re.search(r'^,$', possible_delimiter)
         match2 = re.search(r';$', possible_delimiter)
         if multiple_values == 'y' and match1:
-            splitValues(',')
+            split_values(',')
         elif multiple_values == 'y' and match2:
-            splitValues(';')
+            split_values(';')

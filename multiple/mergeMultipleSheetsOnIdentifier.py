@@ -19,16 +19,16 @@ else:
     columnName = input('Enter column to merge on: ')
 
 
-def makeDataFrame(frame, filename):
-    frame = pd.read_csv(filename, index_col=0)
-    frames.append(frame)
+def make_data_frame(frame_name, name_file):
+    frame_name = pd.read_csv(name_file, index_col=0)
+    frames.append(frame_name)
 
 
 frames = []
 for count, filename in enumerate(os.listdir(directory)):
     filename = directory + "/" + filename
     if filename.endswith('.csv'):
-        makeDataFrame("df_{}".format(count), filename)
+        make_data_frame("df_{}".format(count), filename)
 
 frame_count = len(frames)
 print(frame_count)

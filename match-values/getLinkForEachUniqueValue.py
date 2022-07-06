@@ -40,35 +40,35 @@ for x in unique_2:
 names = sorted(names)
 url_prefix = 'https://catalyst.library.jhu.edu/catalog/bib_'
 
-newdict = {}
+new_dict = {}
 for x in names:
     for index, value in df.people.iteritems():
         value = str(value)
         if x in value:
-            data = newdict.get(x)
-            valuetoadd = df.at[index, 'bib']
-            valuetoadd = url_prefix+str(valuetoadd)
+            data = new_dict.get(x)
+            value_to_add = df.at[index, 'bib']
+            value_to_add = url_prefix + str(value_to_add)
             if data:
-                data.append(valuetoadd)
-                newdict[x] = data
+                data.append(value_to_add)
+                new_dict[x] = data
             else:
-                newdict[x] = [valuetoadd]
+                new_dict[x] = [value_to_add]
     for index, value in df.corporate.iteritems():
         value = str(value)
         if x in value:
-            data = newdict.get(x)
-            valuetoadd = df.at[index, 'bib']
-            valuetoadd = url_prefix+str(valuetoadd)
-            if data and valuetoadd:
-                data.append(valuetoadd)
-                newdict[x] = data
-            elif valuetoadd:
-                newdict[x] = [valuetoadd]
+            data = new_dict.get(x)
+            value_to_add = df.at[index, 'bib']
+            value_to_add = url_prefix + str(value_to_add)
+            if data and value_to_add:
+                data.append(value_to_add)
+                new_dict[x] = data
+            elif value_to_add:
+                new_dict[x] = [value_to_add]
             else:
                 pass
 
 new_list_flat = []
-for k, v in newdict.items():
+for k, v in new_dict.items():
     print(type(v))
     v_first = v[0]
     print(v_first)

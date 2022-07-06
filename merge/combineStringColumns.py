@@ -11,14 +11,13 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-
 df_1 = pd.read_csv(filename, header=0)
 print(df_1.columns)
 
 columnsToCombine = ['subject', 'person', 'geo_location', 'corporate_body']
 
 
-def combineByRow(row):
+def combine_by_row(row):
     all_items = []
     for column in columnsToCombine:
         if pd.notnull(row[column]):
@@ -29,9 +28,8 @@ def combineByRow(row):
     return all_items
 
 
-df_1['title.alternative'] = df_1.apply(lambda row: combineByRow(row), axis=1)
-
+df_1['title.alternative'] = df_1.apply(lambda row: combine_by_row(row), axis=1)
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 filename = filename[:-4]
-df_1.to_csv(filename+'_mergedColumn'+dt+'.csv', index=False)
+df_1.to_csv(filename + '_mergedColumn' + dt + '.csv', index=False)
