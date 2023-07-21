@@ -17,10 +17,10 @@ dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 newDF = pd.DataFrame()
 for filename in os.listdir(directory):
     filename = directory + "/" + filename
-    print(filename)
     if filename.endswith('.csv'):
+        print(filename)
         df = pd.read_csv(filename)
-        newDF = newDF.append(df, ignore_index=True, sort=True)
+        newDF = pd.concat([newDF, df], ignore_index=True, sort=True)
 
 newDF = newDF.drop_duplicates()
 print(newDF.head)

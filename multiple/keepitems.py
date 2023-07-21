@@ -29,6 +29,7 @@ startingIDCount = len(startingIDCount)
 print('Total numbers of identifiers: {}.'.format(startingIDCount))
 
 toKeep = df_1[identifier].unique().tolist()
+
 toKeepCount = len(toKeep)
 print('{} identifiers to keep from sheet 2.'.format(toKeepCount))
 
@@ -50,6 +51,10 @@ updated_df = pd.DataFrame.from_dict(allItems)
 missing = list(set(missing))
 missing_ids = pd.Series(missing)
 actualRemainingIDs = updated_df[identifier].unique().tolist()
+toKeep = set(toKeep)
+actualRemainingIDs = set(actualRemainingIDs)
+not_found = toKeep.difference(actualRemainingIDs)
+print(not_found)
 actualRemainingIDs = len(actualRemainingIDs)
 print('Remaining identifiers: {}.'.format(actualRemainingIDs))
 filename2 = filename2[:-4]

@@ -22,7 +22,7 @@ counts = df_1[columnName].value_counts()
 print(counts.head)
 
 item_list = []
-for index, row in counts.iteritems():
+for index, row in counts.items():
     if row == 1:
         item_list.append(index)
 items = []

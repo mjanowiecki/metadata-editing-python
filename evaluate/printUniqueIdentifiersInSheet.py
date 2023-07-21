@@ -19,4 +19,4 @@ df_1 = pd.read_csv(filename, header=0)
 
 unique_1 = df_1[columnName].unique()
 unique_1 = list(unique_1)
-print(len(unique_1))
+print(unique_1)

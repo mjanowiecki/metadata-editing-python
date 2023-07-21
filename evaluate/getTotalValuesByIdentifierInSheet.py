@@ -29,7 +29,7 @@ print(counts.head)
 
 
 duplicateList = []
-for identifier, count in counts.iteritems():
+for identifier, count in counts.items():
     print(identifier, count)
     if count > 1:
         # If id appears more than once, create temporary dataframe.

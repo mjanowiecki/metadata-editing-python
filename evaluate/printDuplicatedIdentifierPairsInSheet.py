@@ -16,7 +16,7 @@ df = pd.read_csv(filename)
 duplicates = df.duplicated(subset=['handle', 'bitstreams'], keep=False)
 
 duplicate_list = []
-for index, value in duplicates.iteritems():
+for index, value in duplicates.items():
     if value is True:
         duplicate_list.append(index)
 

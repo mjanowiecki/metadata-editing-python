@@ -14,7 +14,7 @@ else:
 df_1 = pd.read_csv(filename, header=0)
 print(df_1.columns)
 
-columnsToCombine = ['subject', 'person', 'geo_location', 'corporate_body']
+columnsToCombine = []
 
 
 def combine_by_row(row):
@@ -24,12 +24,12 @@ def combine_by_row(row):
             for value in str(row[column]).split('|'):
                 all_items.append(value)
     all_items = list(set(all_items))
-    all_items = '|'.join(all_items)
+    all_items = ' '.join(all_items)
     return all_items
 
 
-df_1['title.alternative'] = df_1.apply(lambda row: combine_by_row(row), axis=1)
+df_1['physical_condition'] = df_1.apply(lambda row: combine_by_row(row), axis=1)
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 filename = filename[:-4]
-df_1.to_csv(filename + '_mergedColumn' + dt + '.csv', index=False)
+df_1.to_csv(filename+'_mergedColumn'+dt+'.csv', index=False)

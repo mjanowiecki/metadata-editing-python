@@ -21,7 +21,7 @@ df = pd.read_csv(filename)
 duplicates = df.duplicated(subset=[identifier], keep=False)
 
 duplicate_list = []
-for index, value in duplicates.iteritems():
+for index, value in duplicates.items():
     if value is True:
         row = df.iloc[index]
         duplicate_list.append(row)

@@ -13,6 +13,7 @@ else:
 df = pd.read_csv(filename)
 columns = list(df.columns.values)
 for column in columns:
+    df[column] = df[column].astype(str)
     df[column] = df[column].str.strip()
 
 df.to_csv('stripped_'+filename, index=False)
