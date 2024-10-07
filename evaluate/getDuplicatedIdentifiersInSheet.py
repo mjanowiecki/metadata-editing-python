@@ -1,6 +1,7 @@
 import argparse
 import pandas as pd
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -16,7 +17,7 @@ if args.identifier:
 else:
     identifier = input('Enter name of identifier columns: ')
 
-df = pd.read_csv(filename)
+df = pd.read_csv(filename, dtype='string')
 
 duplicates = df.duplicated(subset=[identifier], keep=False)
 
@@ -31,4 +32,4 @@ for index, value in duplicates.items():
 
 duplicated = pd.DataFrame(duplicate_list)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-duplicated.to_csv('duplicatedIds_'+dt+'.csv', index=False)
+duplicated.to_csv('duplicatedIds_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

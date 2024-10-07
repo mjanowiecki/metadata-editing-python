@@ -4,7 +4,7 @@ import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--directory')
-parser.add_argument('-c', '--columnName')
+parser.add_argument('-c', '--column_name')
 args = parser.parse_args()
 
 if args.directory:
@@ -12,10 +12,10 @@ if args.directory:
 else:
     directory = input('Enter directory: ')
 
-if args.columnName:
-    columnName = args.columnName
+if args.column_name:
+    column_name = args.column_name
 else:
-    columnName = input('Enter column to merge on: ')
+    column_name = input('Enter column to merge on: ')
 
 
 def make_data_frame(frame_name, name_file):
@@ -39,7 +39,7 @@ print(chart)
 
 merged = {}
 for count, frame in enumerate(frames):
-    idList = frame[columnName].to_list()
+    idList = frame[column_name].to_list()
     for identifier in idList:
         if merged.get(identifier) is None:
             merged[identifier] = str(count)

@@ -1,5 +1,6 @@
 import argparse
 import pandas as pd
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -21,8 +22,8 @@ else:
     identifier = input('Enter identifier column: ')
 
 
-df_1 = pd.read_csv(filename, header=0)
-df_2 = pd.read_csv(filename2, header=0)
+df_1 = pd.read_csv(filename, header=0, dtype=str)
+df_2 = pd.read_csv(filename2, header=0, dtype=str)
 
 startingIDCount = df_2[identifier].unique().tolist()
 startingIDCount = len(startingIDCount)
@@ -36,18 +37,18 @@ remainingIDs = startingIDCount - toRemoveCount
 print("Remaining id count should be {}.".format(remainingIDs))
 
 
-allItems = []
+all_items = []
 for count, row in df_2.iterrows():
     row = row
     id_value = row[identifier]
-    if id not in toRemove:
-        allItems.append(row)
+    if id_value not in toRemove:
+        all_items.append(row)
     else:
         print(id_value)
 
-updated_df = pd.DataFrame.from_dict(allItems)
+updated_df = pd.DataFrame.from_dict(all_items)
 actualRemainingIDs = updated_df[identifier].unique().tolist()
 actualRemainingIDs = len(actualRemainingIDs)
 print('Remaining identifiers: {}.'.format(actualRemainingIDs))
 filename2 = filename2[:-4]
-updated_df.to_csv(filename2+'_updated.csv', index=False)
+updated_df.to_csv(filename2+'_updated.csv', index=False, quoting=csv.QUOTE_ALL)

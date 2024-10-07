@@ -1,6 +1,7 @@
 import pandas as pd
 import argparse
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -21,7 +22,9 @@ dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 df_1 = pd.read_csv(filename, header=0, dtype='str')
 
 # List of column headers with multiple values to collect
-valueList = []
+valueList = ['holding_id', 'item_pid', 'new_barcode',
+             'call_number', 'copy', 'internal_note', 'item_number',
+             'status', 'copy_number']
 for value in valueList:
     # Aggregate + sort new values by identifier.
     pivoted = pd.pivot_table(df_1, index=[identifier], values=value,
@@ -34,4 +37,4 @@ for value in valueList:
     new_value[value] = new_value[value].apply(lambda x: '|'.join(str(v) for v in x))
     print(new_value.columns)
     print(new_value.head)
-    new_value.to_csv(value+'AggregatedBy'+identifier+'_'+dt+'.csv')
+    new_value.to_csv(value+'AggregatedBy'+identifier+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

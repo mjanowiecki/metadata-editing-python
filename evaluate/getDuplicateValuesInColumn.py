@@ -4,17 +4,17 @@ import pandas as pd
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
-parser.add_argument('-c', '--columnName')
+parser.add_argument('-c', '--column_name')
 args = parser.parse_args()
 
 if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
-if args.columnName:
-    columnName = args.columnName
+if args.column_name:
+    column_name = args.column_name
 else:
-    columnName = input('Enter column to check for duplicates: ')
+    column_name = input('Enter column to check for duplicates: ')
 
 
 def find_encoding(name_file):
@@ -29,8 +29,9 @@ print(my_encoding)
 
 df = pd.read_csv(filename, encoding=my_encoding)
 
-dupRows = df[df.duplicated([columnName], keep=False)]
+dupRows = df[df.duplicated([column_name], keep=False)]
 
 print(dupRows)
 if dupRows.empty is False:
     dupRows.to_csv(path_or_buf='duplicatedValues_'+filename, index=False)
+    

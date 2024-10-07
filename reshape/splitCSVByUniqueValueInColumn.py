@@ -1,25 +1,26 @@
 import argparse
 import pandas as pd
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
-parser.add_argument('-c', '--columnName')
+parser.add_argument('-c', '--column_name')
 args = parser.parse_args()
 
 if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
-if args.columnName:
-    columnName = args.columnName
+if args.column_name:
+    column_name = args.column_name
 else:
-    columnName = input('Enter column to divide by value: ')
+    column_name = input('Enter column to divide by value: ')
 
-df = pd.read_csv(filename)
-unique = df[columnName].unique()
+df = pd.read_csv(filename, dtype='str')
+unique = df[column_name].unique()
 print(unique)
 for value in unique:
-    newDF = df.loc[df[columnName] == value]
-    print(newDF)
-    value = value.replace('/', '-')
-    newDF.to_csv(value+'.csv', index=False)
+    new_df = df.loc[df[column_name] == value].copy()
+    print(len(new_df))
+    new_df.drop(columns=column_name, inplace=True)
+    new_df.to_csv(value+'.csv', index=False, quoting=csv.QUOTE_ALL)

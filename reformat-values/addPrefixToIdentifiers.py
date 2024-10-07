@@ -22,5 +22,5 @@ with open(filename) as itemMetadataFile:
         identifier = row['identifier']
         zfill_identifier = str(identifier).zfill(5)
         prefix = 'jhu_coll-0002_'
-        expandedId = prefix + zfill_identifier
-        f.writerow([identifier] + [expandedId])
+        expanded_id = prefix + zfill_identifier
+        f.writerow([identifier] + [expanded_id])

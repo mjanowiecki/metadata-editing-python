@@ -13,7 +13,7 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-itemList = []
+item_list = []
 with open(filename) as itemMetadataFile:
     itemMetadata = csv.DictReader(itemMetadataFile)
     for row in itemMetadata:
@@ -21,7 +21,7 @@ with open(filename) as itemMetadataFile:
         date = row['edtf']
         date = date.strip()
         match1 = re.search(r'^\d\d\d\d$', date)
-        match2 = re.search(r'^\d\d\d\d\-\d\d-\d\d$', date)
+        match2 = re.search(r'^\d\d\d\d-\d\d-\d\d$', date)
         match3 = re.search(r'^\d\d\d\d-\d\d$', date)
         match4 = re.search(r'^\d\d\d\d[\?%~]$', date)
         match5 = re.search(r'^\d\d\d\d-\d\d[\?%~]$', date)
@@ -43,9 +43,9 @@ with open(filename) as itemMetadataFile:
             row['solr'] = solr_list
         else:
             pass
-        itemList.append(row)
+        item_list.append(row)
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-df_1 = pd.DataFrame.from_records(itemList)
+df_1 = pd.DataFrame.from_records(item_list)
 filename = filename[:-4]
 df_1.to_csv(filename+'_'+dt+'.csv', index=False)

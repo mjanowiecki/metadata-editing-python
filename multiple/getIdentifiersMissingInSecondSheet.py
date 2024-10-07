@@ -1,3 +1,4 @@
+import csv
 import pandas as pd
 import argparse
 
@@ -59,5 +60,5 @@ for index, data in df.iterrows():
         new_dict.append(data)
 
 # Prints dictionary of missing info to csv.
-newDF = pd.DataFrame.from_dict(new_dict)
-newDF.to_csv(path_or_buf='notFound.csv', index=False)
+new_df = pd.DataFrame.from_dict(new_dict)
+new_df.to_csv(path_or_buf='notFound.csv', index=False, quoting=csv.QUOTE_ALL)

@@ -4,21 +4,21 @@ from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
-parser.add_argument('-c', '--columnName')
+parser.add_argument('-c', '--column_name')
 args = parser.parse_args()
 
 if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
-if args.columnName:
-    columnName = args.columnName
+if args.column_name:
+    column_name = args.column_name
 else:
-    columnName = input('Enter column with identifier: ')
+    column_name = input('Enter column with identifier: ')
 
 df_1 = pd.read_csv(filename, header=0)
 
-counts = df_1[columnName].value_counts()
+counts = df_1[column_name].value_counts()
 print(counts.head)
 
 item_list = []
@@ -28,7 +28,7 @@ for index, row in counts.items():
 items = []
 for index, row in df_1.iterrows():
     print(row)
-    uri = row[columnName]
+    uri = row[column_name]
     if uri in item_list:
         items.append(row)
 

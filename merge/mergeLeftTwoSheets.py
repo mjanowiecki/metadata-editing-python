@@ -1,11 +1,12 @@
 import pandas as pd
 import argparse
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 parser.add_argument('-f2', '--file2')
-parser.add_argument('-c', '--columnName')
+parser.add_argument('-c', '--column_name')
 args = parser.parse_args()
 
 if args.file:
@@ -16,26 +17,28 @@ if args.file2:
     filename2 = args.file2
 else:
     filename2 = input('Enter second filename (including \'.csv\'): ')
-if args.columnName:
-    columnName = args.columnName
+if args.column_name:
+    column_name = args.column_name
 else:
-    columnName = input('Enter column to merge on: ')
+    column_name = input('Enter column to merge on: ')
 
 
-df_1 = pd.read_csv(filename, header=0, dtype={columnName: str})
+df_1 = pd.read_csv(filename, dtype=object)
 print(df_1.columns)
-df_2 = pd.read_csv(filename2, header=0, dtype={columnName: str})
+df_2 = pd.read_csv(filename2, dtype=object)
 print(df_2.columns)
-df_2[columnName] = df_2[columnName].astype(str)
-df_2[columnName] = df_2[columnName].str.strip()
-df_1[columnName] = df_1[columnName].astype(str)
-df_1[columnName] = df_1[columnName].str.strip()
+df_2[column_name] = df_2[column_name].astype(str)
+df_2[column_name] = df_2[column_name].str.strip()
+df_2[column_name] = df_2[column_name].str.strip("'")
+df_1[column_name] = df_1[column_name].astype(str)
+df_1[column_name] = df_1[column_name].str.strip()
+df_1[column_name] = df_1[column_name].str.strip("'")
 
-frame = pd.merge(df_1, df_2, how='left', on=[columnName], suffixes=('_1', '_2'))
+frame = pd.merge(df_1, df_2, how='outer', on=[column_name], suffixes=('_1', '_2'))
 
 # frame = frame.reindex(sorted(frame.columns), axis=1)
-# frame.drop_duplicates(inplace=True)
+frame.drop_duplicates(inplace=True)
 # print(frame.columns)
 print(frame.head)
 dt = datetime.now().strftime('%Y-%m-%d')
-frame.to_csv(filename[:-4]+'_'+dt+'.csv', index=False)
+frame.to_csv(filename[:-4]+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

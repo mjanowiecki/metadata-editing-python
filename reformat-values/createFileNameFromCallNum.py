@@ -21,7 +21,7 @@ def remove_space(x):
 
 df = pd.read_csv(filename, header=0)
 
-itemList = []
+item_list = []
 for index, row in df.iterrows():
     row = row
     print("")
@@ -51,8 +51,8 @@ for index, row in df.iterrows():
         else:
             print(call_num)
             row['filename'] = call_num
-    itemList.append(row)
+    item_list.append(row)
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-df_1 = pd.DataFrame.from_records(itemList)
+df_1 = pd.DataFrame.from_records(item_list)
 df_1.to_csv(filename+'_'+dt+'.csv', index=False)

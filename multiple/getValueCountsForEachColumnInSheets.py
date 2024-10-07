@@ -13,7 +13,7 @@ else:
     directory = input('Enter directory (including \'.csv\'): ')
 
 
-newDF = pd.DataFrame()
+new_df = pd.DataFrame()
 for filename in os.listdir(directory):
     filename = directory + "/" + filename
     df = pd.read_csv(filename)
@@ -24,8 +24,8 @@ for filename in os.listdir(directory):
     df_count = df_count.reset_index()
     df_count['handle'] = handle
     print(df_count.head)
-    newDF = newDF.append(df_count, sort=True)
+    new_df = new_df.append(df_count, sort=True)
 
-print(newDF.head)
+print(new_df.head)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-newDF.to_csv(path_or_buf='countedValues_'+dt+'.csv', index=False)
+new_df.to_csv(path_or_buf='countedValues_'+dt+'.csv', index=False)

@@ -24,3 +24,4 @@ with open(filename) as csvfile:
     sampled_rows = itertools.islice(csvfile, 1, None, 40)
     for sample in sampled_rows:
         f.writerow([sample])
+

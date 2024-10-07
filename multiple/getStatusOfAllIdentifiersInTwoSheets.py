@@ -39,7 +39,7 @@ frame = pd.merge(df_1, df_2, how='outer', on=[identifier],
 
 frame.reset_index(inplace=True)
 
-allItems = []
+all_items = []
 for index, row in frame.iterrows():
     id_value = row[identifier]
     if id_value in sheet_1:
@@ -50,8 +50,8 @@ for index, row in frame.iterrows():
         row['where'] = 'both sheets'
     else:
         row['where'] = 'error'
-    allItems.append(row)
+    all_items.append(row)
 
 
-newDF = pd.DataFrame.from_dict(allItems)
-newDF.to_csv('identifierStatus.csv', index=False)
+new_df = pd.DataFrame.from_records(all_items)
+new_df.to_csv('identifierStatus.csv', index=False)

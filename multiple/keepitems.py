@@ -37,17 +37,17 @@ remainingIDs = toKeepCount
 print("Remaining id count should be {}.".format(remainingIDs))
 
 
-allItems = []
+all_items = []
 missing = []
 for count, row in df_2.iterrows():
     row = row
     id_value = row[identifier]
     if id_value in toKeep:
-        allItems.append(row)
+        all_items.append(row)
     else:
         missing.append(id_value)
 
-updated_df = pd.DataFrame.from_dict(allItems)
+updated_df = pd.DataFrame.from_dict(all_items)
 missing = list(set(missing))
 missing_ids = pd.Series(missing)
 actualRemainingIDs = updated_df[identifier].unique().tolist()

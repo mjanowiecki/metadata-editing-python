@@ -5,7 +5,7 @@ import ast
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
-parser.add_argument('-c', '--columnName')
+parser.add_argument('-c', '--column_name')
 args = parser.parse_args()
 
 if args.file:
@@ -13,22 +13,22 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-if args.columnName:
-    columnName = args.columnName
+if args.column_name:
+    column_name = args.column_name
 else:
-    columnName = input('Enter column to explode: ')
+    column_name = input('Enter column to explode: ')
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 df = pd.read_csv(filename, header=0)
 # If column is formatted as string.
-df[columnName] = df[columnName].str.split('|')
+df[column_name] = df[column_name].str.split('|')
 
 # If column is formatted as list.
-# df[columnName] = df[columnName].apply(ast.literal_eval)
+# df[column_name] = df[column_name].apply(ast.literal_eval)
 df.reset_index()
-df = df.explode(columnName)
+df = df.explode(column_name)
 
 print(df.columns)
 print(df.head)
-df.to_csv(path_or_buf=columnName+'Exploded_'+dt+'.csv')
+df.to_csv(path_or_buf=column_name+'Exploded_'+dt+'.csv')

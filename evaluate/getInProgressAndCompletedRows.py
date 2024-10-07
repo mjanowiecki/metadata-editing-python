@@ -18,14 +18,14 @@ column_list = []
 
 
 # If any of the columns has a value (not nan), row is added to newData.
-newData = []
+new_data = []
 for index, data in df.iterrows():
     for column in column_list:
         if pd.notna(data.get(column)):
-            newData.append(data)
+            new_data.append(data)
             break
 
-df_2 = pd.DataFrame(newData)
+df_2 = pd.DataFrame(new_data)
 
 print(df_2)
 

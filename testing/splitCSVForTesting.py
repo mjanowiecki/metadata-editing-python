@@ -1,5 +1,6 @@
 import argparse
 import pandas as pd
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -16,7 +17,7 @@ else:
     divide = input('Enter the number to divide the spreadsheet by: ')
 
 
-df = pd.read_csv(filename)
+df = pd.read_csv(filename, dtype='str')
 total_rows = len(df.index)
 print(total_rows)
 x = total_rows/int(divide)
@@ -29,7 +30,7 @@ while total_rows > 0:
     total_rows = total_rows - x
     print('sheet {}: rows {}-{}'.format(loop, current_row, (current_row+x)))
     current_row = current_row + x
-    newDF = pd.DataFrame()
-    newDF = newDF.append((df.iloc[(current_row - x):current_row]),
-                         ignore_index=True, sort=True)
-    newDF.to_csv('allFiles_test_'+(str(loop)).zfill(2)+'.csv', index=False)
+    new_df = pd.DataFrame()
+    toAdd = (df.iloc[(current_row - x):current_row])
+    new_df = pd.concat([new_df, toAdd], ignore_index=True, sort=True)
+    new_df.to_csv('extracted_text_'+(str(loop)).zfill(2)+'.csv', index=False, quoting=csv.QUOTE_ALL)

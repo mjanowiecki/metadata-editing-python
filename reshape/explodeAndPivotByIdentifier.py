@@ -45,6 +45,8 @@ df[column2] = df[column2].str.strip()
 df[column2] = df[column2].str.split('|')
 df.reset_index()
 df = df.explode(column2)
+df[column2] = df[column2].str.strip()
+df[column1] = df[column1].str.strip()
 
 # Pivot table, aggregated values associated with column2.
 pivoted = pd.pivot_table(df, index=[column2], values=column1,
@@ -61,7 +63,8 @@ updated_df[column1] = updated_df[column1].apply(sorted)
 updated_df['count'] = updated_df[column1].str.len()
 updated_df[column1] = updated_df[column1].str.join('|')
 
+
 # Create CSV for updated_df.
 print(updated_df.columns)
 print(updated_df.head)
-updated_df.to_csv(column1+'AggregatedBy'+column2+'_'+dt+'.csv')
+updated_df.to_csv(column1+'AggregatedBy'+column2+'_'+dt+'.csv', index=False)

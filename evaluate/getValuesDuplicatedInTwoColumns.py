@@ -17,7 +17,7 @@ identifier = ['dc.identifier.uri']
 df = pd.read_csv(filename)
 df_subset = df[columnsToCompare + identifier]
 
-dupValues = []
+duplicated_values = []
 for index, row in df_subset.iterrows():
     valuesToCompare = []
     for column in columnsToCompare:
@@ -26,10 +26,10 @@ for index, row in df_subset.iterrows():
     totalValues = len(valuesToCompare)
     unique = len(set(valuesToCompare))
     if unique != totalValues:
-        dupValues.append(row)
+        duplicated_values.append(row)
 
 
-df = pd.DataFrame.from_dict(dupValues)
+df = pd.DataFrame.from_dict(duplicated_values)
 print(df.head(15))
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 df.to_csv('duplicatedValues_'+dt+'.csv', index=False)

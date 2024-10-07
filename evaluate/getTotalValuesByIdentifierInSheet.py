@@ -28,7 +28,7 @@ counts = df[identifier].value_counts()
 print(counts.head)
 
 
-duplicateList = []
+duplicate_list = []
 for identifier, count in counts.items():
     print(identifier, count)
     if count > 1:
@@ -39,11 +39,11 @@ for identifier, count in counts.items():
         # If type == map more than 1 time, create dictionary and add to list.
         if maps > 1:
             identifier = identifier.replace('https://jscholarship.library.jhu.edu/handle/', '')
-            duplicateList.append({identifier: id, 'type': 'multiple',
-                                 'numberOfMaps': maps})
+            duplicate_list.append({identifier: id, 'type': 'multiple',
+                                  'numberOfMaps': maps})
 
 # Turn duplicate list into new dataframe.
-duplicates = pd.DataFrame.from_dict(duplicateList)
+duplicates = pd.DataFrame.from_records(duplicate_list)
 
 print(duplicates.columns)
 print(duplicates.head)

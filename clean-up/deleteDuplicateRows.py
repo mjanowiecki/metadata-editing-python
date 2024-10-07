@@ -1,5 +1,6 @@
 import pandas as pd
 import argparse
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -13,4 +14,4 @@ else:
 df = pd.read_csv(filename)
 df = df.drop_duplicates()
 
-df.to_csv(path_or_buf='noDuplicateRows_'+filename, index=False)
+df.to_csv(path_or_buf='noDuplicateRows_'+filename, index=False, quoting=csv.QUOTE_ALL)

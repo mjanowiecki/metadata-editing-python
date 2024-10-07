@@ -14,7 +14,7 @@ else:
 
 df = pd.read_csv(filename)
 
-allItems = []
+all_items = []
 for index, row in df.iterrows():
     row = row
     filename = row['filename']
@@ -23,9 +23,9 @@ for index, row in df.iterrows():
         name = fileList[0]
         ext = fileList[1]
         row['ext'] = ext
-        allItems.append(row)
+        all_items.append(row)
 
 
-updated_df = pd.DataFrame.from_dict(allItems)
+updated_df = pd.DataFrame.from_dict(all_items)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 updated_df.to_csv('matchedPairs_'+dt+'.csv')
