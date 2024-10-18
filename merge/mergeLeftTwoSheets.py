@@ -3,6 +3,8 @@ import argparse
 from datetime import datetime
 import csv
 
+# Joins two spreadsheets using pandas left merge (left join) on an identifier.
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 parser.add_argument('-f2', '--file2')

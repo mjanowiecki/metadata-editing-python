@@ -24,11 +24,9 @@ Converts unstructured lists of values and converts them into new structured list
 | attention, learning,memory ,visual cortex | ['attention', 'learning', 'memory', 'visual cortex'] |
 | corgis; golden retrievers;bulldog;        | ['corgis', 'golden retrievers', 'bulldog']           |
 
-**deleteBlankColumnsAndRows.py**<br>
-Deletes any rows and columns that are completely blank from a CSV.
+**deleteBlankColumnsAndRows.py**<br>Deletes any rows and columns that are completely blank from a CSV.
 
-**deleteDuplicateRows.py**<br>
-Deletes any rows with the exact same information from a CSV.
+**deleteDuplicateRows.py**<br>Deletes any rows with the exact same information from a CSV.
 
 **deleteRowsWithIdentifiers.py**<br>Deletes rows from first spreadsheet using list of identifiers from second spreadsheet.
 
@@ -36,7 +34,7 @@ Deletes any rows with the exact same information from a CSV.
 
 ## evaluate
 
-**getDuplicatedIdentifiersInSheet.py**<br>
+**getDuplicateIdentifiersInSheet.py**<br>
 Finds all identifiers in a spreadsheet that appear more than 1 time in column. Creates a new spreadsheet containing all the rows with duplicated identifiers.
 
 **getDuplicateValuesInColumn.py**<br>
@@ -64,8 +62,6 @@ Finds rows where the cell is empty (nan) for certain columns, and creates a new 
 
 **findFuzzyMatchesWithinAList.py**<br>Matches nearly identical strings within a list (or a column of a CSV) using fuzzywuzzy. It produces CSV with the matches and a CSV with the strings that could not be matched.
 
-**getLinkForEachUniqueValue.py**<br>This script takes a list of unique values from a CSV, and searches for them in second CSV. In the second CSV, each value will be in a column where each cell has multiple value separated by a delimiter. The script will loop through this column and find an identifier or link for each unique value.
-
 **guessLanguage.py**<br>Guesses the language of items from their titles using langdetect.
 
 ## merge
@@ -74,7 +70,6 @@ Finds rows where the cell is empty (nan) for certain columns, and creates a new 
 
 **mergeLeftTwoSheets.py**<br>Joins two spreadsheets using pandas left merge (left join) on an identifier.
 
-**mergeTwoSheetsWithoutPandas.py**<br>Joins information from two spreadsheets by their identifiers.
 
 ## multiple
 
@@ -82,7 +77,7 @@ Finds rows where the cell is empty (nan) for certain columns, and creates a new 
 
 **compareIdentifiersInMultipleSheets.py**<br>Collects identifiers from multiple spreadsheets in a directory and lists the spreadsheets where each identifier appears.
 
-**createSpreadsheetsForEachColumnInSheets.py**<br>Combines multiple spreadsheets in a directory into a dataframe, and makes a new spreadsheet for each column found in the combined dataframe.
+**createNewSheetForEachColumnInSheets.py**<br>Combines multiple spreadsheets in a directory into a dataframe, and makes a new spreadsheet for each column found in the combined dataframe.
 
 **getIdentifiersMissingInSecondSheet.py**<br>Finds any identifiers that exist in the first sheet but *not* in the first sheet.
 
@@ -93,8 +88,6 @@ Finds rows where the cell is empty (nan) for certain columns, and creates a new 
 **mergeMultipleSheetsOnIdentifier.py**<br>Merges multiple spreadsheets in a directory on an identifier column found in all the sheets.
 
 ## reformat-values
-
-**addPrefixToIdentifiers.py**<br>Adds a string prefix to an identifier column.
 
 **convertToETDF.py**<br>Converts a wide variety of date formats to EDTF using regular expressions.
 
@@ -204,7 +197,7 @@ The script makes a new CSV file (namesStandardized.csv) with two columns called 
 | 0002 | Venus     | 839402   |
 | 0002 | Mars      | 9842718  |
 
-**splitCSVByUniqueValueInColumn.py**<br>Generates a new CSV for each unique value found in a column of a spreadsheet. The new CSVs are named based on the unique values found.
+**splitSheetByUniqueValueInColumn.py**<br>Generates a new CSV for each unique value found in a column of a spreadsheet. The new CSVs are named based on the unique values found.
 
 ## testing
 
@@ -214,4 +207,4 @@ The script makes a new CSV file (namesStandardized.csv) with two columns called 
 
 **splitCSVForTesting.py**<br>Splits a large spreadsheet evenly into ten CSVs for testing.
 
-**testLink.py**<br>Tests URLs listed in spreadsheet to see if they work.
+**testLinks.py**<br>Tests URLs listed in spreadsheet to see if they work.
