@@ -29,7 +29,7 @@ for index, row in df_subset.iterrows():
         duplicated_values.append(row)
 
 
-df = pd.DataFrame.from_dict(duplicated_values)
+df = pd.DataFrame.from_records(duplicated_values)
 print(df.head(15))
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 df.to_csv('duplicatedValues_'+dt+'.csv', index=False)

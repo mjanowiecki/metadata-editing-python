@@ -13,10 +13,10 @@ else:
     filename = input('Enter filename (including \'.csv\'): ')
 
 df = pd.read_csv(filename)
-linkList = df['link'].tolist()
+link_list = df['link'].tolist()
 
 bad_links = []
-for count, link in enumerate(linkList):
+for count, link in enumerate(link_list):
     r = requests.head(link, timeout=120)
     print(count, r.status_code)
     if r.status_code != 200:

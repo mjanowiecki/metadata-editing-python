@@ -51,14 +51,16 @@ print(len(unique_2))
 missing = set(unique_1) - set(unique_2)
 missing = list(missing)
 print(len(missing))
-print(missing)
+missing.sort()
+for item in missing:
+    print(item)
 
-# Creates dictionary of missing identifiers information using file 1.
+# Creates dictionary of missing identifiers using information from file 1.
 new_dict = []
 for index, data in df.iterrows():
     if data[identifier] in missing:
         new_dict.append(data)
 
 # Prints dictionary of missing info to csv.
-new_df = pd.DataFrame.from_dict(new_dict)
+new_df = pd.DataFrame.from_records(new_dict)
 new_df.to_csv(path_or_buf='notFound.csv', index=False, quoting=csv.QUOTE_ALL)

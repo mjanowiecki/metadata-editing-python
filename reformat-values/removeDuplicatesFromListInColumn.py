@@ -14,7 +14,7 @@ else:
 if args.column_name:
     column_name = args.column_name
 else:
-    column_name = input('Enter column to fix: ')
+    column_name = input('Enter column to remove duplicates: ')
 
 
 df = pd.read_csv(filename, header=0)
@@ -36,5 +36,6 @@ for index, row in df.iterrows():
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 df_1 = pd.DataFrame.from_records(item_list)
 df_1.to_csv(filename+'_'+dt+'.csv', index=False)
+
 
 

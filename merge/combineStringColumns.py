@@ -1,6 +1,7 @@
 import pandas as pd
 import argparse
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -32,4 +33,4 @@ df_1['dc.publisher'] = df_1.apply(lambda row: combine_by_row(row), axis=1)
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 filename = filename[:-4]
-df_1.to_csv(filename+'_mergedColumn'+dt+'.csv', index=False)
+df_1.to_csv(filename+'_mergedColumn'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

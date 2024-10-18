@@ -6,18 +6,17 @@ import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--directory')
-parser.add_argument('-c', '--column_name')
+parser.add_argument('-id', '--identifier')
 args = parser.parse_args()
 
 if args.directory:
     directory = args.directory
 else:
     directory = input('Enter directory: ')
-
-if args.column_name:
-    column_name = args.column_name
+if args.identifier:
+    identifier = args.identifier
 else:
-    column_name = input('Enter column to merge on: ')
+    identifier = input('Enter name of identifier columns: ')
 
 
 def make_data_frame(frame_name, name_file):
@@ -37,12 +36,12 @@ print(frame_count)
 merged = []
 for count, frame in enumerate(frames):
     if count == 0:
-        new_df = pd.merge(frame, frames[count+1], how='outer', on=column_name)
+        new_df = pd.merge(frame, frames[count+1], how='outer', on=identifier)
         merged.append(new_df)
     elif count == 1:
         pass
     else:
-        new_df = pd.merge(merged[0], frame, how='outer', on=column_name)
+        new_df = pd.merge(merged[0], frame, how='outer', on=identifier)
         merged[0] = new_df
 
 print(merged[0])

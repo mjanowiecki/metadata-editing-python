@@ -29,7 +29,7 @@ for index, row in df.iterrows():
     tinyDict['ext'] = ext
     bitList.append(tinyDict)
 
-df_bit = pd.DataFrame.from_dict(bitList)
+df_bit = pd.DataFrame.from_records(bitList)
 print(df_bit)
 
 frame_1 = df_bit[['handle', 'bit']].copy()
@@ -96,6 +96,6 @@ for index, row in df_merge.iterrows():
 
     lonely.append(tiny)
 
-bitPairs = pd.DataFrame.from_dict(lonely)
+bitPairs = pd.DataFrame.from_records(lonely)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 bitPairs.to_csv('matchedCSV_'+dt+'.csv')

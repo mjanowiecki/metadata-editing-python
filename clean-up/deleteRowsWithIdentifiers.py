@@ -44,7 +44,7 @@ for index, row in df_1.iterrows():
         items.append(row)
 
 
-frame = pd.DataFrame.from_dict(items)
+frame = pd.DataFrame.from_records(items)
 index = frame.index
 endCount = len(index)
 rowsRemoved = initialCount - endCount

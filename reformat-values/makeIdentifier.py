@@ -27,6 +27,6 @@ for count, row in metadata.iterrows():
     row['match_id'] = match_id
     all_items.append(row)
 
-frame = pd.DataFrame.from_dict(all_items, dtype='string')
+frame = pd.DataFrame.from_records(all_items, dtype='string')
 frame = frame.drop(columns=['box', 'folder', 'title'])
 frame.to_csv('withMatchId_'+filename, index=False)

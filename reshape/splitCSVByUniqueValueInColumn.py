@@ -23,4 +23,6 @@ for value in unique:
     new_df = df.loc[df[column_name] == value].copy()
     print(len(new_df))
     new_df.drop(columns=column_name, inplace=True)
+    new_df.dropna(axis=0, how='all', inplace=True)
+    new_df.dropna(axis=1, how='all', inplace=True)
     new_df.to_csv(value+'.csv', index=False, quoting=csv.QUOTE_ALL)

@@ -35,6 +35,6 @@ for count, row in df.iterrows():
     row['total_values'] = total_values
     all_items.append(row)
 
-updated_df = pd.DataFrame.from_dict(all_items)
+updated_df = pd.DataFrame.from_records(all_items)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 updated_df.to_csv('totalValuesOf'+column2+'_'+dt+'.csv')

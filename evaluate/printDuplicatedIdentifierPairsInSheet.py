@@ -23,3 +23,4 @@ for index, value in duplicates.items():
 for duplicate in duplicate_list:
     print(df.iloc[duplicate])
 
+

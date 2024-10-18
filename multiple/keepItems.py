@@ -47,7 +47,7 @@ for count, row in df_2.iterrows():
     else:
         missing.append(id_value)
 
-updated_df = pd.DataFrame.from_dict(all_items)
+updated_df = pd.DataFrame.from_records(all_items)
 missing = list(set(missing))
 missing_ids = pd.Series(missing)
 actualRemainingIDs = updated_df[identifier].unique().tolist()
