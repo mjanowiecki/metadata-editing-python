@@ -1,6 +1,11 @@
+"""
+Loops through a spreadsheet of filenames and adds column containing file extensions to original sheet.
+"""
+
 import argparse
 from datetime import datetime
 import pandas as pd
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -26,6 +31,6 @@ for index, row in df.iterrows():
         all_items.append(row)
 
 
-updated_df = pd.DataFrame.from_dict(all_items)
+updated_df = pd.DataFrame.from_records(all_items)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-updated_df.to_csv('matchedPairs_'+dt+'.csv')
+updated_df.to_csv('matchedPairs_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

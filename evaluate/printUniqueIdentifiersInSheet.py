@@ -1,3 +1,7 @@
+"""
+Print list of unique identifiers to terminal.
+"""
+
 import pandas as pd
 import argparse
 

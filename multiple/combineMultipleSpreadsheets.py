@@ -1,3 +1,7 @@
+"""
+Finds spreadsheets in a directory and combines them into one large spreadsheet.
+"""
+
 import pandas as pd
 import argparse
 import os

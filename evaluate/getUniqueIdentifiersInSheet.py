@@ -1,6 +1,12 @@
+"""
+Finds identifiers that only appear once in a sheet's identifier column.
+Creates a new spreadsheet containing only the rows with non-repeated identifiers.
+"""
+
 import pandas as pd
 import argparse
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -37,4 +43,4 @@ frame = pd.DataFrame.from_records(items)
 print(frame.columns)
 print(frame.head)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-frame.to_csv('uniqueIds_'+dt+'.csv')
+frame.to_csv('uniqueIds_'+dt+'.csv', quoting=csv.QUOTE_ALL)

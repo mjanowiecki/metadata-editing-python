@@ -46,7 +46,7 @@ for count, row in df_2.iterrows():
     else:
         print(id_value)
 
-updated_df = pd.DataFrame.from_dict(all_items)
+updated_df = pd.DataFrame.from_records(all_items)
 actualRemainingIDs = updated_df[identifier].unique().tolist()
 actualRemainingIDs = len(actualRemainingIDs)
 print('Remaining identifiers: {}.'.format(actualRemainingIDs))

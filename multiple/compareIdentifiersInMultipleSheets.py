@@ -1,6 +1,11 @@
+"""
+Collects identifiers from multiple spreadsheets in a directory and lists the spreadsheets where each identifier appears.
+"""
+
 import pandas as pd
 import argparse
 import os
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--directory')
@@ -48,7 +53,7 @@ for count, frame in enumerate(frames):
             value = value+'|'+str(count)
             merged[identifier] = value
 
-df = pd.DataFrame.from_dict(merged, orient='index')
-print(df.head)
+new_df = pd.DataFrame.from_dict(merged, orient='index')
+print(new_df.head)
 
-df.to_csv('compareIds.csv')
+new_df.to_csv('compareIds.csv', index=False, quoting=csv.QUOTE_ALL)

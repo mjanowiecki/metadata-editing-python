@@ -1,6 +1,7 @@
 import pandas as pd
 import argparse
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -23,7 +24,7 @@ else:
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
-df = pd.read_csv(filename, header=0)
+df = pd.read_csv(filename, header=0, dtype='str')
 
 # Reshapes sheet indexed by column1 (column2 aggregated)
 # --> sheet indexed by column2 (column1 aggregated)
@@ -67,4 +68,4 @@ updated_df[column1] = updated_df[column1].str.join('|')
 # Create CSV for updated_df.
 print(updated_df.columns)
 print(updated_df.head)
-updated_df.to_csv(column1+'AggregatedBy'+column2+'_'+dt+'.csv', index=False)
+updated_df.to_csv(column1+'AggregatedBy'+column2+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

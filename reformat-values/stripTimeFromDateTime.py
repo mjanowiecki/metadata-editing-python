@@ -1,3 +1,7 @@
+"""
+Strips the time from a standard DateTime stamp.
+"""
+
 import csv
 import argparse
 import pandas as pd

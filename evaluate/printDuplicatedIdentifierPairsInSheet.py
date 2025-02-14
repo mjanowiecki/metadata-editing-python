@@ -1,3 +1,7 @@
+"""
+Print any duplicated identifier pairs to terminal.
+"""
+
 import argparse
 import pandas as pd
 

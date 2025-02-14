@@ -1,9 +1,11 @@
+"""
+Combines strings from numerous columns into a new column.
+"""
+
 import pandas as pd
 import argparse
 from datetime import datetime
 import csv
-
-# Combines strings from numerous columns into a new column.
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')

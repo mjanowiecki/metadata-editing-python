@@ -1,3 +1,8 @@
+"""
+Finds all identifiers in a spreadsheet that appear more than 1 time in the identifier column.
+Creates a new spreadsheet containing all the rows with duplicated identifiers.
+"""
+
 import argparse
 import pandas as pd
 from datetime import datetime

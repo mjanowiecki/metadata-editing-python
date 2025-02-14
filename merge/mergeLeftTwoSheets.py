@@ -1,9 +1,11 @@
+"""
+Joins two spreadsheets using pandas left merge (left join) on an identifier.
+"""
+
 import pandas as pd
 import argparse
 from datetime import datetime
 import csv
-
-# Joins two spreadsheets using pandas left merge (left join) on an identifier.
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -26,17 +28,15 @@ else:
 
 
 df_1 = pd.read_csv(filename, dtype=object)
-print(df_1.columns)
 df_2 = pd.read_csv(filename2, dtype=object)
-print(df_2.columns)
 df_2[column_name] = df_2[column_name].astype(str)
 df_2[column_name] = df_2[column_name].str.strip()
-df_2[column_name] = df_2[column_name].str.strip("'")
 df_1[column_name] = df_1[column_name].astype(str)
 df_1[column_name] = df_1[column_name].str.strip()
-df_1[column_name] = df_1[column_name].str.strip("'")
+print(df_1[column_name][10])
 
-frame = pd.merge(df_1, df_2, how='outer', on=[column_name], suffixes=('_1', '_2'))
+
+frame = pd.merge(df_1, df_2, how='left', on=[column_name], suffixes=('_1', '_2'))
 
 # frame = frame.reindex(sorted(frame.columns), axis=1)
 frame.drop_duplicates(inplace=True)

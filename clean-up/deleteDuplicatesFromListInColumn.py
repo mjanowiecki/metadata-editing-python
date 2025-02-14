@@ -1,6 +1,7 @@
 import pandas as pd
 import argparse
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -16,9 +17,7 @@ if args.column_name:
 else:
     column_name = input('Enter column to remove duplicates: ')
 
-
 df = pd.read_csv(filename, header=0)
-
 
 item_list = []
 for index, row in df.iterrows():
@@ -34,8 +33,8 @@ for index, row in df.iterrows():
     item_list.append(row)
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-df_1 = pd.DataFrame.from_records(item_list)
-df_1.to_csv(filename+'_'+dt+'.csv', index=False)
+df_new = pd.DataFrame.from_records(item_list)
+df_new.to_csv(filename+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
 
 
 

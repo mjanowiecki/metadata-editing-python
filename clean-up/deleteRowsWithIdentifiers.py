@@ -1,3 +1,6 @@
+"""
+Deletes rows from first spreadsheet using list of identifiers from second spreadsheet.
+"""
 import pandas as pd
 import argparse
 from datetime import datetime
@@ -37,7 +40,7 @@ count = 0
 for index, row in df_1.iterrows():
     uri = row[identifier]
     if uri in unique_2:
-        count = count + 1
+        count += 1
         print(row)
         pass
     else:

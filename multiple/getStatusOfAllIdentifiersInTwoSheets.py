@@ -1,5 +1,10 @@
+"""
+Creates a spreadsheet with a list of all identifiers from both sheets and records if the identifier is in both sheets, only sheet_1, or only sheet_2.
+"""
+
 import pandas as pd
 import argparse
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')  # Original data
@@ -54,4 +59,4 @@ for index, row in frame.iterrows():
 
 
 new_df = pd.DataFrame.from_records(all_items)
-new_df.to_csv('identifierStatus.csv', index=False)
+new_df.to_csv('identifierStatus.csv', index=False, quoting=csv.QUOTE_ALL)

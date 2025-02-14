@@ -1,9 +1,11 @@
+"""
+Generates a new CSV for each unique value found in a column of a spreadsheet.
+The new CSVs are named based on the unique values found.
+"""
+
 import argparse
 import pandas as pd
 import csv
-
-# Generates a new CSV for each unique value found in a column of a spreadsheet.
-# The new CSVs are named based on the unique values found.
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')

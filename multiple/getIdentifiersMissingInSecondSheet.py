@@ -1,3 +1,7 @@
+"""
+Finds any identifiers that exist in the first sheet but not in the second sheet.
+"""
+
 import csv
 import pandas as pd
 import argparse

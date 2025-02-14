@@ -1,7 +1,12 @@
+"""
+Takes a column where each cell contains multiple values, and creates a new row for each value, duplicating its original identifier.
+"""
+
 import pandas as pd
 import argparse
 from datetime import datetime
 import ast
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -31,4 +36,4 @@ df = df.explode(column_name)
 
 print(df.columns)
 print(df.head)
-df.to_csv(path_or_buf=column_name+'Exploded_'+dt+'.csv')
+df.to_csv(path_or_buf=column_name+'Exploded_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

@@ -1,7 +1,10 @@
+"""
+Tests URLs listed in spreadsheet to see if they work.
+"""
+
 import requests
 import pandas as pd
 import argparse
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')

@@ -1,7 +1,12 @@
+"""
+Counts how many values are found in each column of spreadsheets in a directory. This count information is then added by handle (or filename) to a new CSV.
+"""
+
 import pandas as pd
 import argparse
 import os
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--directory')
@@ -28,4 +33,4 @@ for filename in os.listdir(directory):
 
 print(new_df.head)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-new_df.to_csv(path_or_buf='countedValues_'+dt+'.csv', index=False)
+new_df.to_csv(path_or_buf='countedValues_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

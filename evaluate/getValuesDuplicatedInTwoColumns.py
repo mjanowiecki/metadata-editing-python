@@ -1,6 +1,11 @@
+"""
+Get any values duplicated in two columns in a sheet.
+"""
+
 import argparse
 from datetime import datetime
 import pandas as pd
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -32,4 +37,4 @@ for index, row in df_subset.iterrows():
 df = pd.DataFrame.from_records(duplicated_values)
 print(df.head(15))
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-df.to_csv('duplicatedValues_'+dt+'.csv', index=False)
+df.to_csv('duplicatedValues_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

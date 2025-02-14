@@ -1,6 +1,11 @@
+"""
+Find any duplicated values within a column of a spreadsheet, and then creates a new spreadsheet containing all the duplicated rows.
+"""
+
 import argparse
 import chardet
 import pandas as pd
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -33,5 +38,5 @@ dupRows = df[df.duplicated([column_name], keep=False)]
 
 print(dupRows)
 if dupRows.empty is False:
-    dupRows.to_csv(path_or_buf='duplicatedValues_'+filename, index=False)
+    dupRows.to_csv(path_or_buf='duplicatedValues_'+filename, index=False, quoting=csv.QUOTE_ALL)
     

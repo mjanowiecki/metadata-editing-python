@@ -1,3 +1,7 @@
+"""
+Merges multiple spreadsheets in a directory on an identifier column found in all the sheets.
+"""
+
 import pandas as pd
 import argparse
 from datetime import datetime

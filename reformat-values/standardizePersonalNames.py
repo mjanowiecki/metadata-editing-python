@@ -1,3 +1,16 @@
+"""
+Checks personal names from a CSV file to see if there are any punctuation and/or spacing errors. The script bases its punctuation conventions on RDA and checks that these rules are followed:
+
+1) A single space follows a comma.
+2) Initials are followed by a period and there is a space between two initials. (i.e. Adams, E. P., not Adams, EP or Adams E.P.)
+3) The pre-RDA abbreviations of fl., ca., cent., b., and d. are not used.
+4) There is not a period at the end of the name unless the name ends with an abbreviation or initial (this is a local convention). To remove, delete or edit rows 32-34.
+
+The script makes a new CSV file (namesStandardized.csv) with two columns called personalName and errorType.
+The second column tells the user the first punctuation/spacing error that exists for that name (see below for an example.) If there is more than one error, you only see the first error!
+"""
+
+
 import csv
 import re
 import argparse

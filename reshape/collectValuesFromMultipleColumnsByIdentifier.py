@@ -15,16 +15,15 @@ else:
 if args.identifier:
     identifier = args.identifier
 else:
-    identifier = input('Enter name of identifier columns: ')
+    identifier = input('Enter name of identifier column: ')
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 df_1 = pd.read_csv(filename, header=0, dtype='str')
 
 # List of column headers with multiple values to collect
-valueList = ['holding_id', 'item_pid', 'new_barcode',
-             'call_number', 'copy', 'internal_note', 'item_number',
-             'status', 'copy_number']
+valueList = ['columnName1', 'columnName2']
+
 for value in valueList:
     # Aggregate + sort new values by identifier.
     pivoted = pd.pivot_table(df_1, index=[identifier], values=value,

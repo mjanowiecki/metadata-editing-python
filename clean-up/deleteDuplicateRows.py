@@ -1,3 +1,7 @@
+"""
+Deletes any rows with the exact same information from a CSV.
+"""
+
 import pandas as pd
 import argparse
 import csv
