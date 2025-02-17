@@ -9,7 +9,7 @@ from datetime import datetime
 import csv
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-f', '--directory')
+parser.add_argument('-d', '--directory')
 args = parser.parse_args()
 
 if args.directory:
