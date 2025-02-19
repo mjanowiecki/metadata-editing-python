@@ -1,7 +1,5 @@
-"""
-Generates a new CSV for each unique value found in a column of a spreadsheet.
-The new CSVs are named based on the unique values found.
-"""
+"""Generates a new CSV for each unique value found in a column of a CSV.
+The new CSVs are named based on the unique values found."""
 
 import argparse
 import pandas as pd

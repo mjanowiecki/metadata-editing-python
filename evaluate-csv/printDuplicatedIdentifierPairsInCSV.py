@@ -1,6 +1,4 @@
-"""
-Print any duplicated identifier pairs to terminal.
-"""
+"""Print any duplicated identifier pairs in CSV to terminal."""
 
 import argparse
 import pandas as pd

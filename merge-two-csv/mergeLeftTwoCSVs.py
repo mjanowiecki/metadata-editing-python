@@ -1,6 +1,4 @@
-"""
-Joins two spreadsheets using pandas left merge (left join) on an identifier.
-"""
+"""Joins two CSV using pandas left merge (left join) on an identifier."""
 
 import pandas as pd
 import argparse

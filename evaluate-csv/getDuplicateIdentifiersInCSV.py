@@ -1,6 +1,6 @@
 """
-Finds all identifiers in a spreadsheet that appear more than 1 time in the identifier column.
-Creates a new spreadsheet containing all the rows with duplicated identifiers.
+Finds all identifiers in a CSV that appear more than 1 time in the identifier column.
+Creates a new CSV containing all the rows with duplicated identifiers.
 """
 
 import argparse

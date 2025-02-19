@@ -1,6 +1,4 @@
-"""
-Tests URLs listed in spreadsheet to see if they work.
-"""
+"""Tests URLs listed in CSV column to see if they work."""
 
 import requests
 import pandas as pd
@@ -8,15 +6,20 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
+parser.add_argument('-c', '--column_name')
 args = parser.parse_args()
 
 if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
+if args.column_name:
+    column_name = args.column_name
+else:
+    column_name = input('Enter column to check: ')
 
 df = pd.read_csv(filename)
-link_list = df['link'].tolist()
+link_list = df[column_name].tolist()
 
 bad_links = []
 for count, link in enumerate(link_list):

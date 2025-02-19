@@ -1,6 +1,4 @@
-"""
-Print list of unique identifiers to terminal.
-"""
+"""Print list of unique identifiers in CSV to terminal."""
 
 import pandas as pd
 import argparse

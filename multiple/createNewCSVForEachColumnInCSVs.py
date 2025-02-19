@@ -1,6 +1,4 @@
-"""
-Combines multiple spreadsheets in a directory into a dataframe, and makes a new spreadsheet for each column found in the combined dataframe.
-"""
+"""Combines all CSVs in a directory into a dataframe, and makes a new CSV for each column found in the combined dataframe."""
 
 import pandas as pd
 import argparse

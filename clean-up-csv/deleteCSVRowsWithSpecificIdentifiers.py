@@ -1,6 +1,9 @@
+"""Deletes rows from first CSV using list of identifiers from second CSV."""
+
 import argparse
 import pandas as pd
 import csv
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -51,4 +54,5 @@ actualRemainingIDs = updated_df[identifier].unique().tolist()
 actualRemainingIDs = len(actualRemainingIDs)
 print('Remaining identifiers: {}.'.format(actualRemainingIDs))
 filename2 = filename2[:-4]
-updated_df.to_csv(filename2+'_updated.csv', index=False, quoting=csv.QUOTE_ALL)
+dt = datetime.now().strftime('%Y-%m-%d')
+updated_df.to_csv(filename+'_identifiersRemoved_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

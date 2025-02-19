@@ -1,6 +1,4 @@
-"""
-Get any values duplicated in two columns in a sheet.
-"""
+"""Get any values duplicated in two columns in a CSV."""
 
 import argparse
 from datetime import datetime
@@ -9,15 +7,29 @@ import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
+parser.add_argument('-c', '--column1')
+parser.add_argument('-c2', '--column2')
+parser.add_argument('-id', '--identifier')
 args = parser.parse_args()
 
 if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
+if args.column1:
+    column1 = args.column1
+else:
+    column1 = input('First column: ')
+if args.column2:
+    column2 = args.column2
+else:
+    column2 = input('Second column: ')
+if args.identifier:
+    identifier = args.identifier
+else:
+    identifier = input('Enter name of identifier columns: ')
 
-columnsToCompare = ['old_description', 'new_description']
-identifier = ['dc.identifier.uri']
+columnsToCompare = [column1, column2]
 
 df = pd.read_csv(filename)
 df_subset = df[columnsToCompare + identifier]

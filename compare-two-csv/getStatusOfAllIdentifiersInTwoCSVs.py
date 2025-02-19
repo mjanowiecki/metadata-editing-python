@@ -1,5 +1,5 @@
 """
-Creates a spreadsheet with a list of all identifiers from both sheets and records if the identifier is in both sheets, only sheet_1, or only sheet_2.
+Creates a CSV with a list of all identifiers from both CSVs and records if the identifier is in both sheets, only sheet_1, or only sheet_2.
 """
 
 import pandas as pd

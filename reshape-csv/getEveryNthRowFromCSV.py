@@ -1,6 +1,4 @@
-"""
-Collects every Nth row from a CSV to create a sample of data.
-"""
+"""Collects every Nth row from a CSV to create a sample of data."""
 
 import csv
 import argparse

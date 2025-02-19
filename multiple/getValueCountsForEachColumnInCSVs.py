@@ -1,6 +1,4 @@
-"""
-Counts how many values are found in each column of spreadsheets in a directory. This count information is then added by handle (or filename) to a new CSV.
-"""
+"""Counts how many values are found in each column of spreadsheets in a directory. This count information is then added by handle (or filename) to a new CSV."""
 
 import pandas as pd
 import argparse

@@ -1,3 +1,5 @@
+"""Deletes rows from first CSV with any identifier not listed in the second CSV."""
+
 import argparse
 import pandas as pd
 

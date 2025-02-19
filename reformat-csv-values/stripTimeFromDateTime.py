@@ -1,6 +1,4 @@
-"""
-Strips the time from a standard DateTime stamp.
-"""
+"""Strips the time from a standard DateTime stamp."""
 
 import csv
 import argparse

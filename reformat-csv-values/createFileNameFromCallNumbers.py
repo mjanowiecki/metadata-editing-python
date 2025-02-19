@@ -1,6 +1,4 @@
-"""
-Creates a unique filename based on an item's call number.
-"""
+"""Creates a unique filename based on an item's call number."""
 
 import pandas as pd
 import argparse

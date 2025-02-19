@@ -1,6 +1,4 @@
-"""
-Collects identifiers from multiple spreadsheets in a directory and lists the spreadsheets where each identifier appears.
-"""
+"""Collects identifiers from all CSVs in a directory and lists the CSVs where each identifier appears."""
 
 import pandas as pd
 import argparse

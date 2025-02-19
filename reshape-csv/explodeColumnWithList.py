@@ -1,6 +1,4 @@
-"""
-Takes a column where each cell contains multiple values, and creates a new row for each value, duplicating its original identifier.
-"""
+"""Takes a column where each cell contains multiple values, and creates a new row for each value, duplicating its original identifier."""
 
 import pandas as pd
 import argparse

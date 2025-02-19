@@ -1,6 +1,6 @@
 """
-Finds identifiers that only appear once in a sheet's identifier column.
-Creates a new spreadsheet containing only the rows with non-repeated identifiers.
+Finds identifiers that only appear once in a CSV's identifier column.
+Creates a new CSV containing only the rows with non-repeated identifiers.
 """
 
 import pandas as pd

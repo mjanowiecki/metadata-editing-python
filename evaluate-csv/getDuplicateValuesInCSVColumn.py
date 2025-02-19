@@ -1,6 +1,5 @@
-"""
-Find any duplicated values within a column of a spreadsheet, and then creates a new spreadsheet containing all the duplicated rows.
-"""
+"""Find any duplicated values within a column of a CSV,
+and then creates a new CSV containing all the duplicated rows."""
 
 import argparse
 import chardet

@@ -1,3 +1,5 @@
+"Finds and records any differences between two similar CSVs."
+
 import pandas as pd
 import argparse
 from datetime import datetime

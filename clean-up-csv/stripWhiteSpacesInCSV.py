@@ -1,6 +1,4 @@
-"""
-Deletes any rows with the exact same information from a CSV.
-"""
+"""Strips white spaces from all cells in CSV."""
 
 import pandas as pd
 import argparse
@@ -16,6 +14,9 @@ else:
     filename = input('Enter filename (including \'.csv\'): ')
 
 df = pd.read_csv(filename)
-df = df.drop_duplicates()
+columns = df.columns.to_list()
+for column in columns:
+    df[column] = df[column].astype(str)
+    df[column] = df[column].str.strip()
 
-df.to_csv(path_or_buf='noDuplicateRows_'+filename, index=False, quoting=csv.QUOTE_ALL)
+df.to_csv('stripped_'+filename, index=False, quoting=csv.QUOTE_ALL)

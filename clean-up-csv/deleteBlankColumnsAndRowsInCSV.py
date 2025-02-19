@@ -1,6 +1,4 @@
-"""
-Deletes any rows and columns that are completely blank from a CSV.
-"""
+"""Deletes any rows and columns that are completely blank from a CSV."""
 
 import pandas as pd
 import argparse

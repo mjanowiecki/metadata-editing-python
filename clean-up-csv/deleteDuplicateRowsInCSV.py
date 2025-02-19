@@ -1,5 +1,8 @@
+"""Deletes any rows with the exact same information from a CSV."""
+
 import pandas as pd
 import argparse
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -10,8 +13,7 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-df_1 = pd.read_csv(filename, header=0)
+df = pd.read_csv(filename)
+df = df.drop_duplicates()
 
-df_1 = df_1.melt(id_vars=['oclc_id'])
-print(df_1.head)
-df_1.to_csv('melted_.csv')
+df.to_csv(path_or_buf='noDuplicateRows_'+filename, index=False, quoting=csv.QUOTE_ALL)

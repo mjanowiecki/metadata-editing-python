@@ -1,6 +1,4 @@
-"""
-Splits a large spreadsheet evenly into a specified number of CSVs for testing.
-"""
+"""Splits a large CSV evenly into a specified number of CSVs for testing."""
 
 import argparse
 import pandas as pd

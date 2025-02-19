@@ -1,6 +1,5 @@
-"""
-Gets the sum (sum of values) and size (total count of non-empty value) of each unique value in a specific column.
-"""
+"""Gets the sum (sum of values) and size (total count of non-empty value)
+of each unique value in a specific column."""
 
 import pandas as pd
 import argparse

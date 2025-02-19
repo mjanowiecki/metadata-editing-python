@@ -1,6 +1,4 @@
-"""
-Finds any identifiers that exist in the first sheet but not in the second sheet.
-"""
+"""Finds any identifiers that exist in the first CSV but not in the second CSV."""
 
 import csv
 import pandas as pd

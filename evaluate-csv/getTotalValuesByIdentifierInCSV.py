@@ -1,6 +1,5 @@
-"""
-For spreadsheet where some identifiers are repeated in multiple rows, and each row has a number value, add up number values for each identifier.
-"""
+"""For CSV where some identifiers are repeated in multiple rows, and each row has a number value,
+add up number values for each identifier."""
 
 import pandas as pd
 import argparse
@@ -29,8 +28,6 @@ counts = df[identifier].value_counts()
 new_df = pd.merge(df, counts, how='left', on=[identifier], suffixes=('_1', '_2'))
 
 print(counts)
-
-
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 new_df.to_csv(path_or_buf='totalValuesBy'+identifier+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

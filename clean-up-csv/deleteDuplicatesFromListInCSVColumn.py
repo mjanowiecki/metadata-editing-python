@@ -1,3 +1,5 @@
+"""Deletes any duplicate values from a list in a specific CSV column."""
+
 import pandas as pd
 import argparse
 from datetime import datetime

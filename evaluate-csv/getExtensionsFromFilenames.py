@@ -1,6 +1,4 @@
-"""
-Loops through a spreadsheet of filenames and adds column containing file extensions to original sheet.
-"""
+"""Loops through a spreadsheet of filenames and adds column containing file extensions to original CSV."""
 
 import argparse
 from datetime import datetime

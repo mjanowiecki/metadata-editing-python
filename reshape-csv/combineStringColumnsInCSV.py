@@ -1,6 +1,4 @@
-"""
-Combines strings from numerous columns into a new column.
-"""
+"""Joins strings from numerous columns into a new column."""
 
 import pandas as pd
 import argparse
@@ -19,7 +17,7 @@ else:
 df_1 = pd.read_csv(filename, header=0)
 print(df_1.columns)
 
-columnsToCombine = ["dc.publisher", "dc.publisher.1"]
+columnsToCombine = ["column1", "column2"]
 
 
 def combine_by_row(row):
@@ -33,7 +31,7 @@ def combine_by_row(row):
     return all_items
 
 
-df_1['dc.publisher'] = df_1.apply(lambda row: combine_by_row(row), axis=1)
+df_1['newColumn'] = df_1.apply(lambda row: combine_by_row(row), axis=1)
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 filename = filename[:-4]
