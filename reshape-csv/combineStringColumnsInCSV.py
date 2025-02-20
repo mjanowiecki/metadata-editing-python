@@ -5,6 +5,8 @@ import argparse
 from datetime import datetime
 import csv
 
+from multiple.getValueCountsForEachColumnInCSVs import new_filename
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 args = parser.parse_args()
@@ -14,8 +16,8 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-df_1 = pd.read_csv(filename, header=0)
-print(df_1.columns)
+df = pd.read_csv(filename, header=0)
+print(df.columns)
 
 columnsToCombine = ["column1", "column2"]
 
@@ -31,8 +33,9 @@ def combine_by_row(row):
     return all_items
 
 
-df_1['newColumn'] = df_1.apply(lambda row: combine_by_row(row), axis=1)
+df['newColumn'] = df.apply(lambda row: combine_by_row(row), axis=1)
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 filename = filename[:-4]
-df_1.to_csv(filename+'_mergedColumn'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
+new_filename = filename+'_mergedColumn_'+dt+'.csv'
+df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

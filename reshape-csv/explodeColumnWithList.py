@@ -21,7 +21,6 @@ if args.column_name:
 else:
     column_name = input('Enter column to explode: ')
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 df = pd.read_csv(filename, header=0)
 # If column is formatted as string.
@@ -34,4 +33,6 @@ df = df.explode(column_name)
 
 print(df.columns)
 print(df.head)
-df.to_csv(path_or_buf=column_name+'Exploded_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+new_filename = column_name+'Exploded_'+dt+'.csv'
+df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

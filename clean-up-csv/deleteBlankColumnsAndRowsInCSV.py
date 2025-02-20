@@ -3,6 +3,7 @@
 import pandas as pd
 import argparse
 import csv
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -17,4 +18,7 @@ df = pd.read_csv(filename, dtype="string")
 df = df.dropna(axis=0, how='all')
 df = df.dropna(axis=1, how='all')
 
-df.to_csv(path_or_buf='noBlankRowsOrColumns_'+filename, index=False, quoting=csv.QUOTE_ALL)
+filename = filename[:-4]
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+new_filename = 'noBlankRowsOrColumns'+filename+'_'+dt+'.csv'
+df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

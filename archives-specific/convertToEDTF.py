@@ -1,6 +1,4 @@
-"""
-Converts a wide variety of date formats to EDTF using regular expressions.
-"""
+"""Converts a wide variety of date formats to EDTF using regular expressions."""
 
 import csv
 import argparse

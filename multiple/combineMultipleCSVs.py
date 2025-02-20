@@ -15,8 +15,6 @@ if args.directory:
 else:
     directory = input('Enter directory: ')
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-
 new_df = pd.DataFrame()
 for filename in os.listdir(directory):
     filename = directory + "/" + filename
@@ -27,4 +25,6 @@ for filename in os.listdir(directory):
 
 new_df = new_df.drop_duplicates()
 print(new_df.head)
-new_df.to_csv(path_or_buf='combined_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+new_filename = 'combined_'+dt+'.csv'
+new_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

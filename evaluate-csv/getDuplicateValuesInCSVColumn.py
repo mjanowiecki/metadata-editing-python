@@ -5,6 +5,7 @@ import argparse
 import chardet
 import pandas as pd
 import csv
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -37,5 +38,8 @@ dupRows = df[df.duplicated([column_name], keep=False)]
 
 print(dupRows)
 if dupRows.empty is False:
-    dupRows.to_csv(path_or_buf='duplicatedValues_'+filename, index=False, quoting=csv.QUOTE_ALL)
+    dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+    filename = filename[:-4]
+    new_filename = 'duplicatedValuesIn'+filename+'_'+dt+'.csv'
+    dupRows.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)
     

@@ -1,4 +1,4 @@
-"Finds and records any differences between two similar CSVs."
+"""Finds and records any differences between two similar CSVs."""
 
 import pandas as pd
 import argparse

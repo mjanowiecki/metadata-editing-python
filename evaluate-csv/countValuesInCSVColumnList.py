@@ -1,6 +1,7 @@
 import pandas as pd
 import argparse
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -37,4 +38,5 @@ for count, row in df.iterrows():
 
 updated_df = pd.DataFrame.from_records(all_items)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-updated_df.to_csv('totalValuesOf'+column2+'_'+dt+'.csv')
+new_filename = 'totalValuesOf'+column2+'_'+dt+'.csv'
+updated_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

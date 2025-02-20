@@ -51,4 +51,5 @@ mergedFrame = merged[0]
 print(mergedFrame.columns)
 print(mergedFrame.head)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-mergedFrame.to_csv('mergedMultiple_'+dt+'.csv', quoting=csv.QUOTE_ALL)
+new_filename = 'mergedMultiple_'+dt+'.csv'
+mergedFrame.to_csv(new_filename, quoting=csv.QUOTE_ALL)

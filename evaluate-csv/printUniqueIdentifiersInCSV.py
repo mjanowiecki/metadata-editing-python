@@ -17,8 +17,8 @@ if args.identifier:
 else:
     identifier = input('Enter name of identifier columns: ')
 
-df_1 = pd.read_csv(filename, header=0)
+df = pd.read_csv(filename, header=0)
 
-unique_1 = df_1[identifier].unique()
+unique_1 = df[identifier].unique()
 unique_1 = list(unique_1)
 print(unique_1)

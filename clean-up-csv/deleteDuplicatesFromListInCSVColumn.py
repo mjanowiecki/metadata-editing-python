@@ -36,7 +36,8 @@ for index, row in df.iterrows():
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 df_new = pd.DataFrame.from_records(item_list)
-df_new.to_csv(filename+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
+new_filename = 'noDuplicatesInList'+filename+'_'+dt+'.csv'
+df_new.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)
 
 
 

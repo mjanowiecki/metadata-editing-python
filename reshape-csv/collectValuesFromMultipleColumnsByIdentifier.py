@@ -3,6 +3,8 @@ import argparse
 from datetime import datetime
 import csv
 
+from multiple.getValueCountsForEachColumnInCSVs import new_filename
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 parser.add_argument('-id', '--identifier')
@@ -19,14 +21,14 @@ else:
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
-df_1 = pd.read_csv(filename, header=0, dtype='str')
+df = pd.read_csv(filename, header=0, dtype='str')
 
 # List of column headers with multiple values to collect
 valueList = ['columnName1', 'columnName2']
 
 for value in valueList:
     # Aggregate + sort new values by identifier.
-    pivoted = pd.pivot_table(df_1, index=[identifier], values=value,
+    pivoted = pd.pivot_table(df, index=[identifier], values=value,
                              aggfunc=lambda x: list(set(list(x))))
     print(pivoted.sort_values(ascending=True, by=identifier).head())
 
@@ -36,4 +38,5 @@ for value in valueList:
     new_value[value] = new_value[value].apply(lambda x: '|'.join(str(v) for v in x))
     print(new_value.columns)
     print(new_value.head)
-    new_value.to_csv(value+'AggregatedBy'+identifier+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
+    new_filename = value+'AggregatedBy'+identifier+'_'+dt+'.csv'
+    new_value.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

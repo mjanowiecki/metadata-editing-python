@@ -4,6 +4,7 @@ of each unique value in a specific column."""
 import pandas as pd
 import argparse
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -19,18 +20,20 @@ if args.column_name:
 else:
     column_name = input('Enter column to check: ')
 
-df_1 = pd.read_csv(filename, header=0)
+df = pd.read_csv(filename, header=0)
 
-unique_1 = df_1[column_name].unique()
+unique_1 = df[column_name].unique()
 unique_1 = list(unique_1)
-group = df_1.groupby([column_name]).sum()
-group2 = df_1.groupby([column_name]).size()
+group = df.groupby([column_name]).sum()
+group2 = df.groupby([column_name]).size()
 group = group.reset_index()
 group2 = group2.reset_index()
 print(group2.head)
 frame = pd.merge(group, group2, how='left', on=[column_name])
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-frame.to_csv(path_or_buf='stats_'+dt+'.csv', index=False)
+filename = filename[:-4]
+new_filename = 'statsFor'+filename+'_'+dt+'.csv'
+frame.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)
 print(len(unique_1))
 print(unique_1)

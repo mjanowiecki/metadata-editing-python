@@ -1,6 +1,7 @@
 import pandas as pd
 import argparse
 from datetime import datetime
+import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -50,4 +51,4 @@ df_p = pd.DataFrame(pivot)
 df_p = df_p.reset_index()
 print(df_p.head)
 
-df_p.to_csv(path_or_buf='pivotedBy'+column2+'_'+dt+'.csv')
+df_p.to_csv('pivotedBy'+column2+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

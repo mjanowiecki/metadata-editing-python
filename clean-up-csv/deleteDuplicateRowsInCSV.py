@@ -2,6 +2,7 @@
 
 import pandas as pd
 import argparse
+from datetime import datetime
 import csv
 
 parser = argparse.ArgumentParser()
@@ -16,4 +17,7 @@ else:
 df = pd.read_csv(filename)
 df = df.drop_duplicates()
 
-df.to_csv(path_or_buf='noDuplicateRows_'+filename, index=False, quoting=csv.QUOTE_ALL)
+filename = filename[:-4]
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+new_filename = 'noDuplicateRows'+filename+'_'+dt+'.csv'
+df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

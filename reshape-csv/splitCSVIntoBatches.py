@@ -16,7 +16,7 @@ else:
 if args.divide:
     divide = args.divide
 else:
-    divide = input('Enter the number to divide the spreadsheet by: ')
+    divide = input('Enter the number to divide the CSV by: ')
 
 
 df = pd.read_csv(filename, dtype='str')

@@ -4,6 +4,7 @@ import pandas as pd
 import argparse
 import os
 import csv
+from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--directory')
@@ -53,5 +54,6 @@ for count, frame in enumerate(frames):
 
 new_df = pd.DataFrame.from_dict(merged, orient='index')
 print(new_df.head)
-
-new_df.to_csv('compareIds.csv', index=False, quoting=csv.QUOTE_ALL)
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+new_filename = 'identifierStatus_'+dt+'.csv'
+new_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

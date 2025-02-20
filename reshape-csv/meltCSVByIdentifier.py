@@ -18,6 +18,8 @@ local_id    variable	    value
 import pandas as pd
 import argparse
 import csv
+from datetime import datetime
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
@@ -33,8 +35,10 @@ if args.identifier:
 else:
     identifier = input('Enter name of identifier columns: ')
 
-df_1 = pd.read_csv(filename, header=0)
+df = pd.read_csv(filename, header=0)
 
-df_1 = df_1.melt(id_vars=[identifier])
-print(df_1.head)
-df_1.to_csv('melted_.csv', index=False, quoting=csv.QUOTE_ALL)
+df = df.melt(id_vars=[identifier])
+print(df.head)
+dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+new_filename = 'meltedBy'+identifier+'_'+dt+'.csv'
+df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

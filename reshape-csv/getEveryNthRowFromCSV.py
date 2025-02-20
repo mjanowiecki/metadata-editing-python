@@ -16,7 +16,7 @@ else:
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
-old_file = filename.replace('.csv', '')
+old_file = filename[:-4]
 
 f = csv.writer(open('sampledRowsFrom'+old_file+'_'+dt+'.csv', 'w'))
 f.writerow(['samples'])

@@ -31,4 +31,5 @@ for filename in os.listdir(directory):
 
 print(new_df.head)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-new_df.to_csv(path_or_buf='countedValues_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
+new_filename = 'countedValues_'+dt+'.csv'
+new_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

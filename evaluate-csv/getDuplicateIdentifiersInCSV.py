@@ -37,4 +37,6 @@ for index, value in duplicates.items():
 
 duplicated = pd.DataFrame(duplicate_list)
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-duplicated.to_csv('duplicatedIds_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
+filename = filename[:-4]
+new_filename = 'duplicatedIdsIn'+filename+'_'+dt+'.csv'
+duplicated.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

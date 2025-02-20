@@ -3,6 +3,8 @@ import argparse
 from datetime import datetime
 import csv
 
+from multiple.getValueCountsForEachColumnInCSVs import new_filename
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 parser.add_argument('-c', '--column1')
@@ -68,4 +70,5 @@ updated_df[column1] = updated_df[column1].str.join('|')
 # Create CSV for updated_df.
 print(updated_df.columns)
 print(updated_df.head)
-updated_df.to_csv(column1+'AggregatedBy'+column2+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
+new_filename = column1+'AggregatedBy'+column2+'_'+dt+'.csv'
+updated_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

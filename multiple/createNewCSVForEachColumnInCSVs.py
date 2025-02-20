@@ -33,4 +33,4 @@ for column in column_names:
     print(new_df.head)
     column_name = column.replace('.', '_')
     dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
-    new_df.to_csv(path_or_buf=column_name+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
+    new_df.to_csv(column_name+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)
