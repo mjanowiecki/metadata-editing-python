@@ -3,8 +3,6 @@ import argparse
 from datetime import datetime
 import csv
 
-from multiple.getValueCountsForEachColumnInCSVs import new_filename
-
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 parser.add_argument('-c', '--column1')

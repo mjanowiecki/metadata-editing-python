@@ -1,3 +1,5 @@
+"""Counts number of values in a column in a spreadsheet."""
+
 import pandas as pd
 import argparse
 from datetime import datetime

@@ -3,8 +3,6 @@ import argparse
 from datetime import datetime
 import csv
 
-from multiple.getValueCountsForEachColumnInCSVs import new_filename
-
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 parser.add_argument('-id', '--identifier')
@@ -23,11 +21,11 @@ dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
 df = pd.read_csv(filename, header=0, dtype='str')
 
-# List of column headers with multiple values to collect
+# List of column headers with multiple values to collect.
 valueList = ['columnName1', 'columnName2']
 
 for value in valueList:
-    # Aggregate + sort new values by identifier.
+    # Aggregate and sort new values by identifier.
     pivoted = pd.pivot_table(df, index=[identifier], values=value,
                              aggfunc=lambda x: list(set(list(x))))
     print(pivoted.sort_values(ascending=True, by=identifier).head())

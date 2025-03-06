@@ -1,4 +1,4 @@
-"""Tests URLs listed in CSV column to see if they work."""
+"""Prints URL listed in CSV column if 200 code is not returned."""
 
 import requests
 import pandas as pd

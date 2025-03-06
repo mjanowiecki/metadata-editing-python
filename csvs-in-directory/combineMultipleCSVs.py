@@ -1,4 +1,4 @@
-"""Finds all CSVs in a directory and combines them into one large CSV."""
+"""Combines all CSVs in a directory into one large CSV."""
 
 import pandas as pd
 import argparse

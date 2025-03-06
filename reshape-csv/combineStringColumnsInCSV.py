@@ -5,8 +5,6 @@ import argparse
 from datetime import datetime
 import csv
 
-from multiple.getValueCountsForEachColumnInCSVs import new_filename
-
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 args = parser.parse_args()
@@ -19,7 +17,7 @@ else:
 df = pd.read_csv(filename, header=0)
 print(df.columns)
 
-columnsToCombine = ["column1", "column2"]
+columnsToCombine = ['column1', 'column2']
 
 
 def combine_by_row(row):

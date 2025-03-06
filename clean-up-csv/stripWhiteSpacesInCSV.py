@@ -1,4 +1,4 @@
-"""Strips white spaces from all cells in CSV."""
+"""Strips leading and trailing white spaces from all cells in CSV."""
 
 import pandas as pd
 import argparse
