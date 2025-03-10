@@ -14,7 +14,7 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-df = pd.read_csv(filename, dtype="string")
+df = pd.read_csv(filename, header=0, dtype="string")
 df = df.dropna(axis=0, how='all')
 df = df.dropna(axis=1, how='all')
 

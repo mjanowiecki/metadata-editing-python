@@ -13,7 +13,7 @@ else:
     filename = input('Enter filename (including \'.csv\'): ')
 
 
-df = pd.read_csv(filename)
+df = pd.read_csv(filename, header=0)
 
 duplicates = df.duplicated(subset=['handle', 'bitstreams'], keep=False)
 

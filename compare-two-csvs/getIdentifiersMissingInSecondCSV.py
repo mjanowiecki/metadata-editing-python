@@ -24,8 +24,8 @@ else:
     identifier = input('Enter name of identifier columns: ')
 
 
-df = pd.read_csv(filename)
-df_2 = pd.read_csv(filename2)
+df = pd.read_csv(filename, header=0)
+df_2 = pd.read_csv(filename2, header=0)
 
 # Get list of identifiers.
 id_1 = df[identifier].to_list()

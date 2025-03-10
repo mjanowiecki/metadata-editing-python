@@ -21,7 +21,7 @@ old_file = filename[:-4]
 f = csv.writer(open('sampledRowsFrom'+old_file+'_'+dt+'.csv', 'w'))
 f.writerow(['samples'])
 
-with open(filename) as csvfile:
-    sampled_rows = itertools.islice(csvfile, 1, None, 40)
+with open(filename) as csv_file:
+    sampled_rows = itertools.islice(csv_file, 1, None, 40)
     for sample in sampled_rows:
         f.writerow([sample])

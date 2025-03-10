@@ -19,7 +19,7 @@ if args.column_name:
 else:
     column_name = input('Enter column to divide by value: ')
 
-df = pd.read_csv(filename, dtype='str')
+df = pd.read_csv(filename, header=0, dtype='str')
 unique = df[column_name].unique()
 print(unique)
 for value in unique:

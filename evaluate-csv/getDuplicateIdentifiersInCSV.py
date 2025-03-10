@@ -20,7 +20,7 @@ if args.identifier:
 else:
     identifier = input('Enter name of identifier columns: ')
 
-df = pd.read_csv(filename, dtype='string')
+df = pd.read_csv(filename, header=0, dtype='string')
 
 duplicates = df.duplicated(subset=[identifier], keep=False)
 

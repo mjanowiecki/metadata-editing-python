@@ -19,7 +19,7 @@ else:
     divide = input('Enter the number to divide the CSV by: ')
 
 
-df = pd.read_csv(filename, dtype='str')
+df = pd.read_csv(filename, header=0, dtype='str')
 total_rows = len(df.index)
 print(total_rows)
 x = total_rows/int(divide)

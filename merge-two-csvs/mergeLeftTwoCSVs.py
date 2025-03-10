@@ -25,8 +25,8 @@ else:
     column_name = input('Enter column to merge on: ')
 
 
-df_1 = pd.read_csv(filename, dtype=object)
-df_2 = pd.read_csv(filename2, dtype=object)
+df_1 = pd.read_csv(filename, header=0, dtype=object)
+df_2 = pd.read_csv(filename2, header=0, dtype=object)
 df_2[column_name] = df_2[column_name].astype(str)
 df_2[column_name] = df_2[column_name].str.strip()
 df_1[column_name] = df_1[column_name].astype(str)

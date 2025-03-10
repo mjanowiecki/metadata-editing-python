@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 parser.add_argument('-c', '--column1')
 parser.add_argument('-c2', '--column2')
+parser.add_argument('-d', '--delimiter')
 args = parser.parse_args()
 
 if args.file:
@@ -23,6 +24,10 @@ if args.column2:
     column2 = args.column2
 else:
     column2 = input('Enter column to count values: ')
+if args.delimiter:
+    delimiter = args.delimiter
+else:
+    delimiter = input('Enter delimiter of string list: ')
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
@@ -33,7 +38,7 @@ for count, row in df.iterrows():
     row = row
     identifier = row[column1]
     values = row[column2]
-    values = str(values).split('||')
+    values = str(values).split(delimiter)
     total_values = len(set(values))
     row['total_values'] = total_values
     all_items.append(row)

@@ -20,7 +20,7 @@ else:
     column_name = input('Enter name of column containing filenames: ')
 
 
-df = pd.read_csv(filename)
+df = pd.read_csv(filename, header=0)
 
 all_items = []
 for index, row in df.iterrows():

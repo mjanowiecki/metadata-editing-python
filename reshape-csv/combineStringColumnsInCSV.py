@@ -7,12 +7,17 @@ import csv
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
+parser.add_argument('-d', '--delimiter')
 args = parser.parse_args()
 
 if args.file:
     filename = args.file
 else:
     filename = input('Enter filename (including \'.csv\'): ')
+if args.delimiter:
+    delimiter = args.delimiter
+else:
+    delimiter = input('Enter delimiter of string list: ')
 
 df = pd.read_csv(filename, header=0)
 print(df.columns)
@@ -24,10 +29,10 @@ def combine_by_row(row):
     all_items = []
     for column in columnsToCombine:
         if pd.notnull(row[column]):
-            for value in str(row[column]).split('|'):
+            for value in str(row[column]).split(delimiter):
                 all_items.append(value)
     all_items = list(set(all_items))
-    all_items = '|'.join(all_items)
+    all_items = delimiter.join(all_items)
     return all_items
 
 

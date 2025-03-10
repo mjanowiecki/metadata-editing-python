@@ -31,7 +31,7 @@ else:
 
 columnsToCompare = [column1, column2]
 
-df = pd.read_csv(filename)
+df = pd.read_csv(filename, header=0)
 df_subset = df[columnsToCompare + identifier]
 
 duplicated_values = []

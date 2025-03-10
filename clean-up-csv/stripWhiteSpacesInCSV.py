@@ -14,7 +14,7 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-df = pd.read_csv(filename)
+df = pd.read_csv(filename, header=0)
 columns = df.columns.to_list()
 for column in columns:
     df[column] = df[column].astype(str)

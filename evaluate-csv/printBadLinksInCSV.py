@@ -18,7 +18,7 @@ if args.column_name:
 else:
     column_name = input('Enter column to check: ')
 
-df = pd.read_csv(filename)
+df = pd.read_csv(filename, header=0)
 link_list = df[column_name].tolist()
 
 bad_links = []

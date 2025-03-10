@@ -14,7 +14,7 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-df = pd.read_csv(filename)
+df = pd.read_csv(filename, header=0)
 df = df.drop_duplicates()
 
 filename = filename[:-4]

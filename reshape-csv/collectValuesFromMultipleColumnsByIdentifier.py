@@ -6,6 +6,7 @@ import csv
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--file')
 parser.add_argument('-id', '--identifier')
+parser.add_argument('-d', '--delimiter')
 args = parser.parse_args()
 
 if args.file:
@@ -16,6 +17,10 @@ if args.identifier:
     identifier = args.identifier
 else:
     identifier = input('Enter name of identifier column: ')
+if args.delimiter:
+    delimiter = args.delimiter
+else:
+    delimiter = input('Enter delimiter for string list: ')
 
 dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
 
@@ -33,7 +38,7 @@ for value in valueList:
     # Turn pivot table into dataframe.
     new_value = pd.DataFrame(pivoted)
     new_value = new_value.reset_index()
-    new_value[value] = new_value[value].apply(lambda x: '|'.join(str(v) for v in x))
+    new_value[value] = new_value[value].apply(lambda x: delimiter.join(str(v) for v in x))
     print(new_value.columns)
     print(new_value.head)
     new_filename = value+'AggregatedBy'+identifier+'_'+dt+'.csv'
