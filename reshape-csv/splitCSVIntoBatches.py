@@ -18,7 +18,6 @@ if args.divide:
 else:
     divide = input('Enter the number to divide the CSV by: ')
 
-
 df = pd.read_csv(filename, header=0, dtype='str')
 total_rows = len(df.index)
 print(total_rows)

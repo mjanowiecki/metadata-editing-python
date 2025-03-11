@@ -58,7 +58,6 @@ df[column1] = df[column1].str.strip()
 pivoted = pd.pivot_table(df, index=[column2], values=column1,
                          aggfunc=lambda x: delimiter.join(str(v) for v in x))
 
-
 # Create updated_df from pivot table.
 updated_df = pd.DataFrame(pivoted)
 updated_df = updated_df.reset_index()
@@ -66,9 +65,7 @@ updated_df = updated_df.reset_index()
 updated_df[column1] = updated_df[column1].str.split(delimiter)
 updated_df[column1] = updated_df[column1].apply(set)
 updated_df[column1] = updated_df[column1].apply(sorted)
-updated_df['count'] = updated_df[column1].str.len()
 updated_df[column1] = updated_df[column1].str.join(delimiter)
-
 
 # Create CSV for updated_df.
 print(updated_df.columns)
