@@ -38,7 +38,7 @@ def combine_by_row(row):
 
 df['newColumn'] = df.apply(lambda row: combine_by_row(row), axis=1)
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 filename = filename[:-4]
 new_filename = filename+'_mergedColumn_'+dt+'.csv'
 df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

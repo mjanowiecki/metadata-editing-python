@@ -22,7 +22,7 @@ if args.delimiter:
 else:
     delimiter = input('Enter delimiter for string list: ')
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 
 df = pd.read_csv(filename, header=0, dtype='str')
 

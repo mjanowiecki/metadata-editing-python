@@ -30,7 +30,7 @@ with open(filename) as itemMetadataFile:
         item_list.append(row)
 
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 df = pd.DataFrame.from_records(item_list)
 filename = filename[:-4]
-df.to_csv(filename+'_dates.csv', index=False, quoting=csv.QUOTE_ALL)
+df.to_csv(filename+'TimeStripped'+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

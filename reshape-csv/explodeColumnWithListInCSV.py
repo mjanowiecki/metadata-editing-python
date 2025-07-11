@@ -37,6 +37,6 @@ df = df.explode(column_name)
 
 print(df.columns)
 print(df.head)
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 new_filename = column_name+'Exploded_'+dt+'.csv'
 df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

@@ -25,7 +25,7 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 
 f = csv.writer(open('namesStandardized'+dt+'.csv', 'w'))
 f.writerow(['personalName']+['errorType'])

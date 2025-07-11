@@ -47,7 +47,7 @@ with open(filename) as itemMetadataFile:
             pass
         item_list.append(row)
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 df_1 = pd.DataFrame.from_records(item_list)
 filename = filename[:-4]
 df_1.to_csv(filename+'_'+dt+'.csv', index=False)

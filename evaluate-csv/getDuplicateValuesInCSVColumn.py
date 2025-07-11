@@ -38,7 +38,7 @@ dupRows = df[df.duplicated([column_name], keep=False)]
 
 print(dupRows)
 if dupRows.empty is False:
-    dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+    dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
     filename = filename[:-4]
     new_filename = 'duplicatedValuesIn'+filename+'_'+dt+'.csv'
     dupRows.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

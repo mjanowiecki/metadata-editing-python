@@ -42,6 +42,6 @@ for count, row in df.iterrows():
     all_items.append(row)
 
 updated_df = pd.DataFrame.from_records(all_items)
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 new_filename = 'totalValuesOf'+column2+'_'+dt+'.csv'
 updated_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

@@ -40,7 +40,7 @@ for index, row in df.iterrows():
 frame = pd.DataFrame.from_records(items)
 print(frame.columns)
 print(frame.head)
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 filename = filename[:-4]
 new_filename = 'uniqueIdsFrom'+filename+'_'+dt+'.csv'
 frame.to_csv(new_filename, quoting=csv.QUOTE_ALL)

@@ -30,6 +30,6 @@ for filename in os.listdir(directory):
     new_df = new_df.append(df_count, sort=True)
 
 print(new_df.head)
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 new_filename = 'countedValues_'+dt+'.csv'
 new_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

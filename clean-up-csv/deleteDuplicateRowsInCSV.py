@@ -18,6 +18,6 @@ df = pd.read_csv(filename, header=0)
 df = df.drop_duplicates()
 
 filename = filename[:-4]
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 new_filename = 'noDuplicateRows'+filename+'_'+dt+'.csv'
 df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

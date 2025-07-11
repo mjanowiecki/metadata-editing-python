@@ -59,6 +59,6 @@ for index, row in frame.iterrows():
 
 
 new_df = pd.DataFrame.from_records(all_items)
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 new_filename = 'identifierStatus_'+dt+'.csv'
 new_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

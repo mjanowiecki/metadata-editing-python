@@ -23,7 +23,7 @@ else:
     column2 = input('Enter column to pivot: ')
 
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 
 df = pd.read_csv(filename, header=0)
 print(df.head)

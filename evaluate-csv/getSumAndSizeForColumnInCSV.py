@@ -31,7 +31,7 @@ group2 = group2.reset_index()
 print(group2.head)
 frame = pd.merge(group, group2, how='left', on=[column_name])
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 filename = filename[:-4]
 new_filename = 'statsFor'+filename+'_'+dt+'.csv'
 frame.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

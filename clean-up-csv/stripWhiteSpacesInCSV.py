@@ -21,6 +21,6 @@ for column in columns:
     df[column] = df[column].str.strip()
 
 filename = filename[:-4]
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 new_filename = 'stripped'+filename+'_'+dt+'.csv'
 df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

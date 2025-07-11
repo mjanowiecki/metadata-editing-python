@@ -32,5 +32,5 @@ for column in column_names:
     new_df = new_df.dropna(subset=[column])
     print(new_df.head)
     column_name = column.replace('.', '_')
-    dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+    dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
     new_df.to_csv(column_name+'_'+dt+'.csv', index=False, quoting=csv.QUOTE_ALL)

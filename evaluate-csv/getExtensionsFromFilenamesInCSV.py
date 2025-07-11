@@ -35,7 +35,7 @@ for index, row in df.iterrows():
 
 
 updated_df = pd.DataFrame.from_records(all_items)
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 filename = filename[:-4]
 new_filename = 'extensionsAddedTp'+filename+'_'+dt+'.csv'
 updated_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

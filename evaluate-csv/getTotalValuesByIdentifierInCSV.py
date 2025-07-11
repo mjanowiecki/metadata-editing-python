@@ -29,6 +29,6 @@ updated_df = pd.merge(df, counts, how='left', on=[identifier], suffixes=('_1', '
 
 print(counts)
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 new_filename = 'totalValuesBy'+identifier+'_'+dt+'.csv'
 updated_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

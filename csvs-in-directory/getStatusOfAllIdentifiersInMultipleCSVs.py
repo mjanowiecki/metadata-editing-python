@@ -54,6 +54,6 @@ for count, frame in enumerate(frames):
 
 new_df = pd.DataFrame.from_dict(merged, orient='index')
 print(new_df.head)
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 new_filename = 'identifierStatus_'+dt+'.csv'
 new_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

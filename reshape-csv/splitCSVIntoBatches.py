@@ -34,4 +34,4 @@ while total_rows > 0:
     new_df = pd.DataFrame()
     toAdd = (df.iloc[(current_row - x):current_row])
     new_df = pd.concat([new_df, toAdd], ignore_index=True, sort=True)
-    new_df.to_csv('batch_'+(str(loop)).zfill(2)+'.csv', index=False, quoting=csv.QUOTE_ALL)
+    new_df.to_csv('frary_'+(str(loop)).zfill(2)+'.csv', index=False, quoting=csv.QUOTE_ALL)

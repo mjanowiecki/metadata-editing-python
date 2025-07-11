@@ -14,7 +14,7 @@ if args.file:
 else:
     filename = input('Enter filename (including \'.csv\'): ')
 
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 
 old_file = filename[:-4]
 

@@ -25,6 +25,6 @@ for filename in os.listdir(directory):
 
 new_df = new_df.drop_duplicates()
 print(new_df.head)
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 new_filename = 'combined_'+dt+'.csv'
 new_df.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)

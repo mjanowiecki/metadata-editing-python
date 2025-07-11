@@ -48,7 +48,7 @@ for index, row in df_subset.iterrows():
 
 df_updated = pd.DataFrame.from_records(duplicated_values)
 print(df.head(15))
-dt = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+dt = datetime.now().strftime('%Y-%m-%d%H.%M.%S')
 filename = filename[:-4]
 new_filename ='duplicatedValuesIn'+filename+'_'+dt+'.csv'
 df_updated.to_csv(new_filename, index=False, quoting=csv.QUOTE_ALL)
