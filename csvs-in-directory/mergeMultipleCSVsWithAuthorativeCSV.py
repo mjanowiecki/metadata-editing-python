@@ -1,4 +1,4 @@
-"""Merges all CSVs in a directory against one authoritative CSV. Uses an alternative identifier in all CSVs to count when there is more than one match found."""
+"""Merges each CSV in a directory against one authoritative CSV. Uses an alternative identifier in all CSVs to count when there is more than one match found."""
 
 import pandas as pd
 import argparse
