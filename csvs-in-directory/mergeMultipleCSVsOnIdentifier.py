@@ -1,4 +1,4 @@
-"""Merges all CSVs in a directory on identifier column found in all the sheets."""
+"""Merges all CSVs in a directory into one big CSV on an identifier column found in all the sheets."""
 
 import pandas as pd
 import argparse
