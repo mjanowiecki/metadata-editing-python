@@ -1,4 +1,15 @@
-"""Joins strings from numerous columns into a new column."""
+"""Adds strings from numerous columns into a new column with a delimiter between entries."""
+
+# original
+# column1       column2                                 column3
+# Smith, Ed     Villa, Shirley                          Vu, Xiomara|Nekesa, Otto
+# Smith, Jane   Camacho, Meredith|Zuzanka, Janusz       Horn, Mohammad
+
+# new
+# newColumn
+# Smith, Ed|Villa, Shirley|Vu, Xiomara|Nekesa, Otto
+# Smith, Jane|Camacho, Meredith|Zuzanka, Janusz|Horn, Mohammad
+
 
 import pandas as pd
 import argparse
@@ -22,12 +33,13 @@ else:
 df = pd.read_csv(filename, header=0)
 print(df.columns)
 
-columnsToCombine = ['column1', 'column2']
+# Addd columns to combine to list below
+columns_to_combine = []
 
 
 def combine_by_row(row):
     all_items = []
-    for column in columnsToCombine:
+    for column in columns_to_combine:
         if pd.notnull(row[column]):
             for value in str(row[column]).split(delimiter):
                 all_items.append(value)

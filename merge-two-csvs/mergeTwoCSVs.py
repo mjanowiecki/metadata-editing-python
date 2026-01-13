@@ -29,7 +29,6 @@ if args.method:
 else:
     method = input('Enter type of merge (left, right, inner, outer, cross): ')
 
-
 df_1 = pd.read_csv(filename, header=0, dtype=str)
 df_2 = pd.read_csv(filename2, header=0, dtype=str)
 df_2[column_name] = df_2[column_name].astype(str)
@@ -38,9 +37,8 @@ df_1[column_name] = df_1[column_name].astype(str)
 df_1[column_name] = df_1[column_name].str.strip()
 
 
-frame = pd.merge(df_1, df_2, how=method, on=[column_name], suffixes=('_1', '_2'), indicator=True)
+frame = pd.merge(df_1, df_2, how=method, on=column_name, suffixes=('_1', '_2'), indicator=True)
 
-frame = frame.reindex(sorted(frame.columns), axis=1)
 print(frame.columns)
 print(frame.head)
 dt = datetime.now().strftime('%Y-%m-%d')
